@@ -36,10 +36,10 @@ export const Header = () => {
             </button>
           </a>
         </Link>
-        <Link href={router.pathname} locale={'jp'} passHref>
+        <Link href={router.pathname} locale={'es'} passHref>
           <a>
-            <button className={router.locale === 'jp' ? 'active' : undefined}>
-              {t('japanese')}
+            <button className={router.locale === 'es' ? 'active' : undefined}>
+              {t('spanish')}
             </button>
           </a>
         </Link>
