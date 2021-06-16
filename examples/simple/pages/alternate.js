@@ -3,7 +3,7 @@ import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
 
 const AlternatePage = () => {
-  const { t } = useTranslation('home')
+  const { t } = useTranslation('alternate')
   return (
     <>
       <Header />

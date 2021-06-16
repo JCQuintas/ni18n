@@ -7,8 +7,8 @@
     "dev": "next"
   },
   "dependencies": {
-    "i18next-nestjs": "file:../../",
-    "next": "10.2.3"
+    "next": "10.2.3",
+    "ni18n": "link:../../"
   },
   "devDependencies": {
     "prettier": "^2.3.1"
