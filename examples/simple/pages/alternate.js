@@ -16,8 +16,4 @@ const AlternatePage = () => {
   )
 }
 
-export const getStaticProps = async () => ({
-  props: {},
-})
-
 export default AlternatePage

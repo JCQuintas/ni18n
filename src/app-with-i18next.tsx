@@ -43,6 +43,8 @@ export const appWithI18Next = (
       return instance
     }, [options])
 
+    i18nInstance.changeLanguage(props.router.locale || options.lng)
+
     return i18nInstance ? (
       <I18nextProvider i18n={i18nInstance}>
         <WrappedComponent {...props} />

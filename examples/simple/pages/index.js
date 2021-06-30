@@ -17,8 +17,4 @@ const IndexPage = () => {
   )
 }
 
-export const getStaticProps = async () => ({
-  props: {},
-})
-
 export default IndexPage
