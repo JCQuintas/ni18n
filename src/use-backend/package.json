@@ -1,0 +1,5 @@
+{
+  "name": "ni18n-use-backend",
+  "browser": "./browser.js",
+  "main": "./server.js"
+}

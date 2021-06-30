@@ -3,8 +3,8 @@ import type { AppProps } from 'next/app'
 import type { ElementType } from 'react'
 import React, { useMemo } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import { I18nextProvider, initReactI18next } from 'react-i18next'
-import i18n from 'i18next'
+import { I18nextProvider } from 'react-i18next'
+import { createI18nInstance } from './create-i18n-instance'
 
 export let i18nextInstance: I18NextClient | null = null
 
@@ -18,32 +18,16 @@ export const appWithI18Next = (
 
   const WithI18Next = (props: AppProps) => {
     const i18nInstance = useMemo(() => {
-      const config: InitOptions = {
-        ...options,
-        get initImmediate(): boolean {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          return (process as any).browser && typeof window !== 'undefined'
-        },
-        react: {
-          useSuspense: true,
-        },
-        interpolation: {
-          escapeValue: false,
-        },
-      }
-
-      const instance = i18n.use(initReactI18next)
-
-      if (instance.isInitialized) return instance
-
-      instance.init(config)
+      const instance = createI18nInstance(options)
 
       i18nextInstance = instance
 
       return instance
     }, [options])
 
-    i18nInstance.changeLanguage(props.router.locale || options.lng)
+    // i18nInstance.changeLanguage(props.router.locale || options.lng)
+
+    console.log(i18nInstance.t('homePage'))
 
     return i18nInstance ? (
       <I18nextProvider i18n={i18nInstance}>

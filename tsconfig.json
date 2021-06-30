@@ -12,7 +12,8 @@
     "strictNullChecks": true,
     "target": "es5",
     "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "downlevelIteration": true
   },
   "include": ["src/**/*"],
   "exclude": ["examples/**/*"]
