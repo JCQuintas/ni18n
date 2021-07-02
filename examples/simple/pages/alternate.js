@@ -1,6 +1,7 @@
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
+import { loadTranslations } from 'ni18n'
 
 const AlternatePage = () => {
   const { t } = useTranslation('alternate')
@@ -14,6 +15,23 @@ const AlternatePage = () => {
       <Footer />
     </>
   )
+}
+
+export const getStaticProps = (props) => {
+  return {
+    props: {
+      ...loadTranslations(
+        {
+          lng: 'en',
+          fallbackLng: 'en',
+          supportedLngs: ['en', 'es', 'pt'],
+          ns: ['alternate', 'home', 'translation'],
+        },
+        props.locale,
+        ['alternate', 'translation'],
+      ),
+    },
+  }
 }
 
 export default AlternatePage
