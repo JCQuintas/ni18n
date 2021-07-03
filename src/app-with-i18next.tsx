@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import type { ElementType } from 'react'
 import React, { useMemo } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import type { Ni18nState } from './translation-loaders'
+import type { Ni18nState } from './load-translations'
 import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from './create-i18n-instance'
 

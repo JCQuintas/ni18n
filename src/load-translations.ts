@@ -1,5 +1,5 @@
 import type { InitOptions, Resource } from 'i18next'
-import { createI18nInstance } from '../create-i18n-instance'
+import { createI18nInstance } from './create-i18n-instance'
 
 const getFallbackLocales = (
   initialLocale: string | undefined,
