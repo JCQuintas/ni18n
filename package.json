@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "nodemon --watch src --ext ts,tsx,json --exec npm run build",
-    "build": "tsc",
+    "build": "tsc && cp src/use-backend/package.json dist/use-backend/package.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jose Quintas <juniorquintas@gmail.com>",

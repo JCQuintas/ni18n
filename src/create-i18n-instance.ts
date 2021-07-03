@@ -3,14 +3,19 @@ import { initReactI18next } from 'react-i18next'
 import i18n from 'i18next'
 import useBackend from './use-backend'
 
-export const createI18nInstance = (options: InitOptions): I18NextClient => {
-  const isBrowser = (process as any).browser && typeof window !== 'undefined'
+const isBrowser = () =>
+  Boolean(
+    (process as unknown as Record<string, string>).browser &&
+      typeof window !== 'undefined',
+  )
 
+export const createI18nInstance = (options: InitOptions): I18NextClient => {
   let backendConfig = {}
   const hasCustomBackend = options.backend
 
   // Server side backend config
-  if (!isBrowser && !hasCustomBackend) {
+  if (!isBrowser() && !hasCustomBackend) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const path = require('path')
     const localePath = './public/locales/{{lng}}/{{ns}}.json'
 
@@ -22,18 +27,13 @@ export const createI18nInstance = (options: InitOptions): I18NextClient => {
         ),
         loadPath: path.resolve(process.cwd(), localePath),
       },
+      preload: options.supportedLngs,
     }
   }
 
   // Client side backend config
-  if (isBrowser && !hasCustomBackend) {
-    const localePath = '/locales/{{lng}}/{{ns}}.json'
-
+  if (isBrowser() && !hasCustomBackend) {
     backendConfig = {
-      backend: {
-        addPath: localePath.replace('.json', '.missing.json'),
-        loadPath: localePath,
-      },
       preload: options.supportedLngs,
     }
   }
@@ -42,9 +42,8 @@ export const createI18nInstance = (options: InitOptions): I18NextClient => {
     ...backendConfig,
     ...options,
     get initImmediate(): boolean {
-      return (process as any).browser && typeof window !== 'undefined'
+      return isBrowser()
     },
-    debug: true,
     react: {
       useSuspense: true,
     },
@@ -53,7 +52,9 @@ export const createI18nInstance = (options: InitOptions): I18NextClient => {
     },
   }
 
-  const instance = useBackend(i18n.use(initReactI18next))
+  const instance = i18n.createInstance(config)
+
+  useBackend(instance.use(initReactI18next))
 
   instance.init(config)
 

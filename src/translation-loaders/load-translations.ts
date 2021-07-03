@@ -1,5 +1,5 @@
-import type { FallbackLng, InitOptions } from 'i18next'
-import { createI18nInstance } from './create-i18n-instance'
+import type { FallbackLng, InitOptions, Resource } from 'i18next'
+import { createI18nInstance } from '../create-i18n-instance'
 
 const getFallbackLocales = (fallbackLng?: false | FallbackLng): string[] => {
   if (typeof fallbackLng === 'string') return [fallbackLng]
@@ -14,18 +14,29 @@ const getFallbackLocales = (fallbackLng?: false | FallbackLng): string[] => {
 const getNamespaces = (
   options: InitOptions,
   namespacesNeeded?: string | string[],
-) => {
+): string[] => {
   if (Array.isArray(namespacesNeeded) && namespacesNeeded.length > 0)
     return namespacesNeeded
   if (typeof namespacesNeeded === 'string') return [namespacesNeeded]
   return [options.defaultNS || 'translation']
 }
 
-export const loadTranslations = async (
+export type Ni18nState = {
+  __ni18n__: {
+    resources: Resource
+    lng?: string
+  }
+}
+
+export const loadTranslations = (
   options: InitOptions,
   initialLocale?: string,
   namespacesNeeded?: string | string[],
-) => {
+): Ni18nState => {
+  if (!options) {
+    throw new Error('No `options` passed to loadTranslations')
+  }
+
   const instance = createI18nInstance({ ...options, lng: initialLocale })
   const selectedLocale = initialLocale || options.lng
   const locales = Array.from(
@@ -52,18 +63,8 @@ export const loadTranslations = async (
 
   return {
     __ni18n__: {
-      store,
-      locale: selectedLocale,
+      resources: store,
+      lng: selectedLocale,
     },
   }
 }
-
-const curriedLoadTranslations =
-  (options: InitOptions) =>
-  (initialLocale?: string, namespaces?: string | string[]) =>
-    loadTranslations(options, initialLocale, namespaces)
-
-export const createTranslationLoader = (options: InitOptions) => ({
-  serverSideTranslations: curriedLoadTranslations(options),
-  staticTranslations: curriedLoadTranslations(options),
-})
