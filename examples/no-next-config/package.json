@@ -1,0 +1,16 @@
+{
+  "name": "simple-example-ni18n",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next -p 3001"
+  },
+  "dependencies": {
+    "next": "10.2.3",
+    "ni18n": "link:../../"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.1"
+  }
+}
