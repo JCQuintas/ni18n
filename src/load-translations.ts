@@ -1,31 +1,7 @@
 import type { InitOptions, Resource } from 'i18next'
 import { createI18nInstance } from './create-i18n-instance'
-
-const getFallbackLocales = (
-  initialLocale: string | undefined,
-  options: InitOptions,
-): string[] => {
-  if (!initialLocale && options.supportedLngs) return [...options.supportedLngs]
-
-  const { fallbackLng } = options
-  if (typeof fallbackLng === 'string') return [fallbackLng]
-  if (Array.isArray(fallbackLng)) return [...fallbackLng]
-
-  if (typeof fallbackLng === 'object' && fallbackLng !== null)
-    return Object.values(fallbackLng).flat()
-
-  return []
-}
-
-const getNamespaces = (
-  options: InitOptions,
-  namespacesNeeded?: string | string[],
-): string[] => {
-  if (Array.isArray(namespacesNeeded) && namespacesNeeded.length > 0)
-    return namespacesNeeded
-  if (typeof namespacesNeeded === 'string') return [namespacesNeeded]
-  return [options.defaultNS || 'translation']
-}
+import { getFallbackLocales } from './get-fallback-locales'
+import { getNamespaces } from './get-namespaces'
 
 export type Ni18nState = {
   __ni18n__: {
