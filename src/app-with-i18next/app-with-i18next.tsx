@@ -1,13 +1,11 @@
-import type { InitOptions, i18n as I18NextClient } from 'i18next'
+import type { InitOptions } from 'i18next'
 import type { AppProps } from 'next/app'
 import type { ElementType } from 'react'
 import React, { useMemo } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { I18nextProvider } from 'react-i18next'
-import { createI18nInstance } from './create-i18n-instance'
+import { createI18nInstance } from '../create-i18n-instance'
 import { getOptions } from './get-options'
-
-export let i18nextInstance: I18NextClient | null = null
 
 export const appWithI18Next = (
   WrappedComponent: ElementType<AppProps>,
@@ -22,8 +20,6 @@ export const appWithI18Next = (
 
     const i18nInstance = useMemo(() => {
       const instance = createI18nInstance(getOptions(__ni18n__, options))
-
-      i18nextInstance = instance
 
       return instance
     }, [options, __ni18n__])
