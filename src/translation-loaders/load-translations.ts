@@ -1,9 +1,15 @@
-import type { FallbackLng, InitOptions, Resource } from 'i18next'
+import type { InitOptions, Resource } from 'i18next'
 import { createI18nInstance } from '../create-i18n-instance'
 
-const getFallbackLocales = (fallbackLng?: false | FallbackLng): string[] => {
+const getFallbackLocales = (
+  initialLocale: string | undefined,
+  options: InitOptions,
+): string[] => {
+  if (!initialLocale && options.supportedLngs) return [...options.supportedLngs]
+
+  const { fallbackLng } = options
   if (typeof fallbackLng === 'string') return [fallbackLng]
-  if (Array.isArray(fallbackLng)) return fallbackLng
+  if (Array.isArray(fallbackLng)) return [...fallbackLng]
 
   if (typeof fallbackLng === 'object' && fallbackLng !== null)
     return Object.values(fallbackLng).flat()
@@ -41,7 +47,7 @@ export const loadTranslations = (
   const selectedLocale = initialLocale || options.lng
   const locales = Array.from(
     new Set(
-      [selectedLocale, ...getFallbackLocales(options.fallbackLng)].filter(
+      [selectedLocale, ...getFallbackLocales(initialLocale, options)].filter(
         Boolean,
       ) as string[],
     ),
