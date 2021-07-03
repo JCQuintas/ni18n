@@ -16,5 +16,5 @@
     "downlevelIteration": true
   },
   "include": ["src/**/*"],
-  "exclude": ["examples/**/*"]
+  "exclude": ["examples/**/*", "src/**/*.test.*"]
 }

@@ -19,7 +19,7 @@ export const appWithI18Next = (
     const { __ni18n__ } = props?.pageProps
 
     const i18nInstance = useMemo(() => {
-      const instance = createI18nInstance(getOptions(__ni18n__, options))
+      const instance = createI18nInstance(getOptions(options, __ni18n__))
 
       return instance
     }, [options, __ni18n__])
