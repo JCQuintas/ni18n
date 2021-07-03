@@ -1,5 +1,10 @@
 import { useTranslation } from 'react-i18next'
 
+const changeLanguage = (i18n, language) => {
+  window.localStorage.setItem('MY_LANGUAGE', language)
+  i18n.changeLanguage(language)
+}
+
 export const Header = () => {
   const { t, i18n } = useTranslation()
   return (
@@ -21,19 +26,19 @@ export const Header = () => {
       <div>
         <button
           className={i18n.language === 'en' ? 'active' : undefined}
-          onClick={() => i18n.changeLanguage('en')}
+          onClick={() => changeLanguage(i18n, 'en')}
         >
           {t('english')}
         </button>
         <button
           className={i18n.language === 'pt' ? 'active' : undefined}
-          onClick={() => i18n.changeLanguage('pt')}
+          onClick={() => changeLanguage(i18n, 'pt')}
         >
           {t('portuguese')}
         </button>
         <button
           className={i18n.language === 'es' ? 'active' : undefined}
-          onClick={() => i18n.changeLanguage('es')}
+          onClick={() => changeLanguage(i18n, 'es')}
         >
           {t('spanish')}
         </button>
