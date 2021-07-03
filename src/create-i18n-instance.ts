@@ -3,43 +3,33 @@ import { initReactI18next } from 'react-i18next'
 import i18n from 'i18next'
 import useBackend from './use-backend'
 
-const isBrowser = () =>
-  Boolean(
-    (process as unknown as Record<string, string>).browser &&
-      typeof window !== 'undefined',
-  )
-
-export const createI18nInstance = (options: InitOptions): I18NextClient => {
-  let backendConfig = {}
+const isBrowser = () => typeof window !== 'undefined'
+const getBackendConfig = (options: InitOptions) => {
   const hasCustomBackend = options.backend
 
   // Server side backend config
   if (!isBrowser() && !hasCustomBackend) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const path = require('path')
-    const localePath = './public/locales/{{lng}}/{{ns}}.json'
+    const localePath = './public/locales/{{lng}}/{{ns}}'
 
-    backendConfig = {
+    return {
       backend: {
-        addPath: path.resolve(
-          process.cwd(),
-          localePath.replace('.json', '.missing.json'),
-        ),
-        loadPath: path.resolve(process.cwd(), localePath),
+        addPath: path.resolve(process.cwd(), `${localePath}.missing.json`),
+        loadPath: path.resolve(process.cwd(), `${localePath}.json`),
       },
-      preload: options.supportedLngs,
     }
   }
 
   // Client side backend config
-  if (isBrowser() && !hasCustomBackend) {
-    backendConfig = {
-      preload: options.supportedLngs,
-    }
+  return {
+    preload: options.supportedLngs,
   }
+}
 
+export const createI18nInstance = (options: InitOptions): I18NextClient => {
   const config: InitOptions = {
-    ...backendConfig,
+    ...getBackendConfig(options),
     ...options,
     get initImmediate(): boolean {
       return isBrowser()
