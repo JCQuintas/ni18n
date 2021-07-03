@@ -1,5 +1,6 @@
 import { getBackendConfig } from './get-backend-config'
 import { isBrowser } from './is-browser'
+import path from 'path'
 
 jest.mock('./is-browser')
 
@@ -8,9 +9,14 @@ it('should return the backend plugin config if not in browser and no custom back
 
   expect(result).toStrictEqual({
     backend: {
-      addPath:
-        '/home/jcquintas/ni18n/public/locales/{{lng}}/{{ns}}.missing.json',
-      loadPath: '/home/jcquintas/ni18n/public/locales/{{lng}}/{{ns}}.json',
+      addPath: path.resolve(
+        process.cwd(),
+        './public/locales/{{lng}}/{{ns}}.missing.json',
+      ),
+      loadPath: path.resolve(
+        process.cwd(),
+        './public/locales/{{lng}}/{{ns}}.json',
+      ),
     },
   })
 })
