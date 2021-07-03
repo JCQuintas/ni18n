@@ -10,13 +10,13 @@ import { getOptions } from './get-options'
 export const appWithI18Next = (
   WrappedComponent: ElementType<AppProps>,
   options: InitOptions,
-): unknown => {
+): ElementType => {
   if (!options) {
     throw new Error('No `options` passed to appWithI18Next')
   }
 
   const WithI18Next = (props: AppProps) => {
-    const { __ni18n__ } = props?.pageProps
+    const { __ni18n__ } = props.pageProps || {}
 
     const i18nInstance = useMemo(() => {
       const instance = createI18nInstance(getOptions(options, __ni18n__))
@@ -24,12 +24,10 @@ export const appWithI18Next = (
       return instance
     }, [options, __ni18n__])
 
-    return i18nInstance ? (
+    return (
       <I18nextProvider i18n={i18nInstance}>
         <WrappedComponent {...props} />
       </I18nextProvider>
-    ) : (
-      <WrappedComponent {...props} />
     )
   }
 
