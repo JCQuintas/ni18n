@@ -1,0 +1,25 @@
+import { getNamespaces } from './get-namespaces'
+
+it('should return namespacesNeeded when it is an array with values', () => {
+  const result = getNamespaces({}, ['ns1', 'ns2'])
+
+  expect(result).toStrictEqual(['ns1', 'ns2'])
+})
+
+it('should return namespacesNeeded when it is a string', () => {
+  const result = getNamespaces({}, 'ns1')
+
+  expect(result).toStrictEqual(['ns1'])
+})
+
+it('should return option.defaultNS when namespacesNeeded is not an array nor string', () => {
+  const result = getNamespaces({ defaultNS: 'defaultNS' }, undefined)
+
+  expect(result).toStrictEqual(['defaultNS'])
+})
+
+it('should return translation if there is no defaultNS', () => {
+  const result = getNamespaces({}, undefined)
+
+  expect(result).toStrictEqual(['translation'])
+})
