@@ -2,6 +2,7 @@ import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
 import { loadTranslations } from 'ni18n'
+import { ni18nConfig } from '../components/config'
 
 const IndexPage = () => {
   const { t } = useTranslation('home')
@@ -21,16 +22,7 @@ const IndexPage = () => {
 export const getStaticProps = (props) => {
   return {
     props: {
-      ...loadTranslations(
-        {
-          lng: 'en',
-          fallbackLng: 'en',
-          supportedLngs: ['en', 'es', 'pt'],
-          ns: ['alternate', 'home', 'translation'],
-        },
-        props.locale,
-        ['home', 'translation'],
-      ),
+      ...loadTranslations(ni18nConfig, props.locale, ['home', 'translation']),
     },
   }
 }
