@@ -1,7 +1,7 @@
 import type { InitOptions, i18n as I18NextClient } from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import i18n from 'i18next'
-import useBackend from '../use-backend/server'
+import useBackend from '../use-backend'
 import { getBackendConfig } from './get-backend-config'
 import { isBrowser } from './is-browser'
 
