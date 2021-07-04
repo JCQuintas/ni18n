@@ -11,7 +11,6 @@ import { getOptions } from './get-options'
  * Use `appWithI18Next` inside your `_app.jsx` file to initialize the `I18nextProvider`.
  *
  * ```jsx
- * // _app.jsx
  * const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />
  *
  * export default appWithI18Next(MyApp, ni18nConfig)
@@ -22,8 +21,7 @@ import { getOptions } from './get-options'
  */
 export const appWithI18Next = (
   WrappedComponent: ElementType<AppProps>,
-  options: InitOptions,
-  plugins?: Parameters<I18NextClient['use']>[0][],
+  options: InitOptions & { use?: Parameters<I18NextClient['use']>[0][] },
 ): ElementType => {
   if (!options) {
     throw new Error('No `options` passed to appWithI18Next')
@@ -33,8 +31,10 @@ export const appWithI18Next = (
     const { __ni18n__ } = props.pageProps || {}
 
     const i18nInstance = useMemo(() => {
+      const { use: plugins, ...config } = options
+
       const { instance } = createI18nInstance(
-        getOptions(options, __ni18n__),
+        getOptions(config, __ni18n__),
         plugins,
       )
 

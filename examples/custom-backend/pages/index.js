@@ -3,7 +3,6 @@ import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
 import { loadTranslations } from 'ni18n'
 import { ni18nConfig } from '../components/config'
-import HttpBackend from 'i18next-http-backend'
 
 const IndexPage = () => {
   const { t } = useTranslation('home')
@@ -23,12 +22,10 @@ const IndexPage = () => {
 export const getStaticProps = async (props) => {
   return {
     props: {
-      ...(await loadTranslations(
-        ni18nConfig,
-        props.locale,
-        ['home', 'translation'],
-        [HttpBackend],
-      )),
+      ...(await loadTranslations(ni18nConfig, props.locale, [
+        'home',
+        'translation',
+      ])),
     },
   }
 }

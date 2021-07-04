@@ -19,49 +19,50 @@ type NamespacesNeeded = Namespace
  * It will make the translations available for the client through the `props`.
  *
  * ```js
- * export const getStaticProps = (props) => ({
+ * export const getStaticProps = async (props) => ({
  *   props: {
- *     ...loadTranslations(ni18nConfig, props.locale, 'my-namespace'),
+ *     ...(await loadTranslations(ni18nConfig, props.locale, 'my-namespace')),
  *   },
  * })
  * ```
  *
- * @param options The same value passed to `appWithI18Next`
+ * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options)
  * @param initialLocale The initial locale for this page
  * @param namespacesNeeded The namespaces that are needed for all the elements in this page
  * @returns an object with a `__ni18n__` property to be used internally
  */
 export const loadTranslations = async (
-  options: InitOptions,
+  options: InitOptions & { use?: Parameters<I18NextClient['use']>[0][] },
   initialLocale?: string,
   namespacesNeeded?: NamespacesNeeded,
-  plugins?: Parameters<I18NextClient['use']>[0][],
 ): Promise<Ni18nState> => {
   if (!options) {
     throw new Error('No `options` passed to loadTranslations')
   }
 
+  const { use: plugins, ...config } = options
+
   const { instance, init } = createI18nInstance(
     {
-      ...options,
+      ...config,
       lng: initialLocale,
-      preload: !initialLocale && options.supportedLngs,
+      preload: !initialLocale && config.supportedLngs,
     },
     plugins,
   )
 
   await init
 
-  const selectedLocale = initialLocale || options.lng
+  const selectedLocale = initialLocale || config.lng
   const locales = Array.from(
     new Set(
-      [selectedLocale, ...getFallbackLocales(initialLocale, options)].filter(
+      [selectedLocale, ...getFallbackLocales(initialLocale, config)].filter(
         Boolean,
       ) as string[],
     ),
   )
 
-  const namespaces = getNamespaces(options, namespacesNeeded)
+  const namespaces = getNamespaces(config, namespacesNeeded)
 
   const store = Object.fromEntries(
     locales.map((locale) => [
