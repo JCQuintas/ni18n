@@ -1,0 +1,18 @@
+{
+  "name": "simple-example-ni18n",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next\""
+  },
+  "dependencies": {
+    "i18next-http-backend": "^1.2.6",
+    "next": "10.2.3",
+    "ni18n": "link:../../"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "prettier": "^2.3.1"
+  }
+}
