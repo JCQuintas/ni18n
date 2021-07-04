@@ -28,6 +28,16 @@ jobs:
         env:
           CI: true
 
+  # # COVERAGE
+  # coverage:
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: codecov/codecov-action@v1
+  #       with:
+  #         flags: unittests
+
   # PRETTIER
   prettier:
     runs-on: ubuntu-latest
