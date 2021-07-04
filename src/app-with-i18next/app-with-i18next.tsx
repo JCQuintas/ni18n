@@ -7,6 +7,19 @@ import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
 import { getOptions } from './get-options'
 
+/**
+ * Use `appWithI18Next` inside your `_app.jsx` file to initialize the `I18nextProvider`.
+ *
+ * ```jsx
+ * // _app.jsx
+ * const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />
+ *
+ * export default appWithI18Next(MyApp, ni18nConfig)
+ * ```
+ *
+ * @param WrappedComponent The MyApp component
+ * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options)
+ */
 export const appWithI18Next = (
   WrappedComponent: ElementType<AppProps>,
   options: InitOptions,
