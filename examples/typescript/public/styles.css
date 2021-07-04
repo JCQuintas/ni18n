@@ -1,0 +1,68 @@
+:root {
+  font-family: 'Open Sans', sans-serif;
+  --background: #ffffff;
+  --white: #ffffff;
+  --accent: #34617e;
+  --accent-light: #c1def1;
+}
+
+body {
+  margin: 0;
+}
+
+#__next {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 8px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header > .logo {
+  margin-right: 8px;
+  width: 91px;
+  height: 40px;
+  color: var(--accent);
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  padding: 8px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+button {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: none;
+  margin: 0 4px;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.active {
+  background: var(--accent);
+  color: var(--white);
+}
+
+button:hover:not(.active) {
+  background: var(--accent-light);
+}

@@ -1,4 +1,5 @@
 import type { InitOptions, Resource } from 'i18next'
+import type { Namespace } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
 import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from './get-namespaces'
@@ -10,12 +11,8 @@ export type Ni18nState = {
   }
 }
 
-type StandaloneOrArray<T> = T | T[]
-type ExtractTypeFromArray<T> = T extends (infer L)[]
-  ? [L] extends [string]
-    ? L
-    : string
-  : string
+// For some reason if we don't reassign `Namespace` it gets compiled into `Namespace<string>`
+type NamespacesNeeded = Namespace
 
 /**
  * Use `loadTranslations` inside the `getStaticProps` or `getServerSideProps`.
@@ -34,16 +31,9 @@ type ExtractTypeFromArray<T> = T extends (infer L)[]
  * @param namespacesNeeded The namespaces that are needed for all the elements in this page
  * @returns an object with a `__ni18n__` property to be used internally
  */
-export const loadTranslations = <
-  Options extends InitOptions,
-  InitialLocale extends ExtractTypeFromArray<Options['supportedLngs']>,
-  NamespacesNeeded extends StandaloneOrArray<
-    ExtractTypeFromArray<Options['ns']>
-  >,
->(
-  options: Options,
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  initialLocale?: InitialLocale | (string & {}),
+export const loadTranslations = (
+  options: InitOptions,
+  initialLocale?: string,
   namespacesNeeded?: NamespacesNeeded,
 ): Ni18nState => {
   if (!options) {
