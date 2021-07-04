@@ -1,4 +1,4 @@
-import type { InitOptions } from 'i18next'
+import type { InitOptions, i18n as I18NextClient } from 'i18next'
 import type { AppProps } from 'next/app'
 import type { ElementType } from 'react'
 import React, { useMemo } from 'react'
@@ -23,6 +23,7 @@ import { getOptions } from './get-options'
 export const appWithI18Next = (
   WrappedComponent: ElementType<AppProps>,
   options: InitOptions,
+  plugins?: Parameters<I18NextClient['use']>[0][],
 ): ElementType => {
   if (!options) {
     throw new Error('No `options` passed to appWithI18Next')
@@ -32,7 +33,10 @@ export const appWithI18Next = (
     const { __ni18n__ } = props.pageProps || {}
 
     const i18nInstance = useMemo(() => {
-      const instance = createI18nInstance(getOptions(options, __ni18n__))
+      const { instance } = createI18nInstance(
+        getOptions(options, __ni18n__),
+        plugins,
+      )
 
       return instance
     }, [options, __ni18n__])

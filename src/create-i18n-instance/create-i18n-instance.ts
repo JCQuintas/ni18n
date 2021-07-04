@@ -5,7 +5,13 @@ import useBackend from '../use-backend'
 import { getBackendConfig } from './get-backend-config'
 import { isBrowser } from './is-browser'
 
-export const createI18nInstance = (options: InitOptions): I18NextClient => {
+export const createI18nInstance = (
+  options: InitOptions,
+  plugins?: Parameters<I18NextClient['use']>[0][],
+): {
+  instance: I18NextClient
+  init: ReturnType<I18NextClient['init']>
+} => {
   const config: InitOptions = {
     ...getBackendConfig(options),
     ...options,
@@ -24,7 +30,14 @@ export const createI18nInstance = (options: InitOptions): I18NextClient => {
 
   useBackend(instance.use(initReactI18next))
 
-  instance.init(config)
+  if (Array.isArray(plugins)) {
+    plugins.flat().forEach((plugin) => instance.use(plugin))
+  }
 
-  return instance
+  const init = instance.init(config)
+
+  return {
+    instance,
+    init,
+  }
 }

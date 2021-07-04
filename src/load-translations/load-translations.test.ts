@@ -6,39 +6,42 @@ jest.mock('../create-i18n-instance')
 const createI18nInstanceMock = (
   createI18nInstance as jest.Mock
 ).mockReturnValue({
-  services: {
-    resourceStore: {
-      data: {
-        test: {
-          ns1: {
-            a: 'a',
+  instance: {
+    services: {
+      resourceStore: {
+        data: {
+          test: {
+            ns1: {
+              a: 'a',
+            },
+            ns2: {
+              b: 'b',
+            },
           },
-          ns2: {
-            b: 'b',
-          },
-        },
-        language: {
-          ns1: {
-            a: '1',
-          },
-          ns2: {
-            b: '2',
+          language: {
+            ns1: {
+              a: '1',
+            },
+            ns2: {
+              b: '2',
+            },
           },
         },
       },
     },
   },
+  init: Promise.resolve(),
 })
 
-it('should throw error when no options is passed', () => {
-  expect(() => {
-    // @ts-expect-error test throw
-    loadTranslations()
-  }).toThrowError('No `options` passed to loadTranslations')
+it('should throw error when no options is passed', async () => {
+  // @ts-expect-error test throw
+  await expect(loadTranslations()).rejects.toThrowError(
+    'No `options` passed to loadTranslations',
+  )
 })
 
-it('should return correct values when both parameters are strings', () => {
-  const result = loadTranslations({}, 'test', 'ns1')
+it('should return correct values when both parameters are strings', async () => {
+  const result = await loadTranslations({}, 'test', 'ns1')
 
   expect(result).toStrictEqual({
     __ni18n__: {
@@ -52,8 +55,8 @@ it('should return correct values when both parameters are strings', () => {
   })
 })
 
-it('should return correct values when namespace is an array', () => {
-  const result = loadTranslations({}, 'language', ['ns1', 'ns2'])
+it('should return correct values when namespace is an array', async () => {
+  const result = await loadTranslations({}, 'language', ['ns1', 'ns2'])
 
   expect(result).toStrictEqual({
     __ni18n__: {
@@ -68,8 +71,8 @@ it('should return correct values when namespace is an array', () => {
   })
 })
 
-it('should return correct values there is no initialLocale but options.lng is set', () => {
-  const result = loadTranslations({ lng: 'test' }, undefined, 'ns1')
+it('should return correct values there is no initialLocale but options.lng is set', async () => {
+  const result = await loadTranslations({ lng: 'test' }, undefined, 'ns1')
 
   expect(result).toStrictEqual({
     __ni18n__: {
@@ -83,13 +86,16 @@ it('should return correct values there is no initialLocale but options.lng is se
   })
 })
 
-it('should return an empty resource object if there is no data', () => {
+it('should return an empty resource object if there is no data', async () => {
   createI18nInstanceMock.mockReturnValueOnce({
-    services: {
-      resourceStore: {},
+    instance: {
+      services: {
+        resourceStore: {},
+      },
     },
+    init: Promise.resolve(),
   })
-  const result = loadTranslations({ lng: 'test' }, undefined, 'ns1')
+  const result = await loadTranslations({ lng: 'test' }, undefined, 'ns1')
 
   expect(result).toStrictEqual({
     __ni18n__: {
