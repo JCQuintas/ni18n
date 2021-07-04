@@ -1,5 +1,5 @@
 {
-  "name": "simple-example-ni18n",
+  "name": "typescript-example-ni18n",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,9 +11,6 @@
     "ni18n": "link:../../"
   },
   "devDependencies": {
-    "i18next": "^20.3.2",
-    "prettier": "^2.3.1",
-    "react-i18next": "^11.11.0",
-    "typescript": "^4.3.5"
+    "prettier": "^2.3.1"
   }
 }

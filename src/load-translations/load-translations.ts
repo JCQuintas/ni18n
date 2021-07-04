@@ -45,6 +45,7 @@ export const loadTranslations = async (
     {
       ...options,
       lng: initialLocale,
+      preload: !initialLocale && options.supportedLngs,
     },
     plugins,
   )

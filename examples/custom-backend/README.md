@@ -1,3 +1,3 @@
-# Simple Example
+# Custom Backend Example
 
-Shows how to integrate `ni18n` into a regular `Next.js` project by leveraging its [i18n routing](https://nextjs.org/docs/advanced-features/i18n-routing) mechanism.
+This project shows how you can use a custom [backend plugin](https://www.i18next.com/overview/plugins-and-utils) to load your translation files. Just be sure to add the plugin's settings on your config and add the plugin class to the `use` property of the options.

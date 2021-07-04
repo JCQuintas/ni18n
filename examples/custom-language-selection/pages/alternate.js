@@ -18,13 +18,13 @@ const AlternatePage = () => {
   )
 }
 
-export const getStaticProps = (props) => {
+export const getStaticProps = async (props) => {
   return {
     props: {
-      ...loadTranslations(ni18nConfig, props.locale, [
+      ...(await loadTranslations(ni18nConfig, props.locale, [
         'alternate',
         'translation',
-      ]),
+      ])),
     },
   }
 }

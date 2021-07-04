@@ -23,7 +23,10 @@ const IndexPage = () => {
 export const getStaticProps: GetStaticProps = async (props) => {
   return {
     props: {
-      ...loadTranslations(ni18nConfig, props.locale, ['home', 'translation']),
+      ...(await loadTranslations(ni18nConfig, props.locale, [
+        'home',
+        'translation',
+      ])),
     },
   }
 }
