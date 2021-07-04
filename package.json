@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "nodemon --watch src --ignore 'src/**/*.test.*' --ext ts,tsx,json --exec npm run build",
-    "build": "tsc && cp src/use-backend/package.json dist/use-backend/package.json",
+    "dev": "nodemon --watch src --ignore 'src/**/*.test.*' --ext ts,tsx,json --exec yarn build",
+    "build": "tsc --project tsconfig.build.json && yarn cp:backend",
+    "cp:backend": "cp src/use-backend/package.json dist/use-backend/package.json",
     "test": "jest"
   },
   "author": "Jose Quintas <juniorquintas@gmail.com>",
