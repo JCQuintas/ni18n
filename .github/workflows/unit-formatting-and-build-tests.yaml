@@ -1,7 +1,10 @@
-name: Node Github CI
+name: Unit, Formatting and Build Tests
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
