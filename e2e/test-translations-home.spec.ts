@@ -1,5 +1,4 @@
 import { test } from '@playwright/test'
-import { testPageAlternate } from './test-page-alternate'
 import { testPageHome } from './test-page-home'
 
 test('translations work for language "en"', async ({ page }) => {
@@ -7,7 +6,6 @@ test('translations work for language "en"', async ({ page }) => {
   await page.goto('http://localhost:3000/')
 
   await testPageHome(page, language)
-  await testPageAlternate(page, language)
 })
 
 test('translations work for language "es"', async ({ page }) => {
@@ -15,7 +13,6 @@ test('translations work for language "es"', async ({ page }) => {
   await page.goto('http://localhost:3000/')
 
   await testPageHome(page, language)
-  await testPageAlternate(page, language)
 })
 
 test('translations work for language "pt"', async ({ page }) => {
@@ -23,5 +20,4 @@ test('translations work for language "pt"', async ({ page }) => {
   await page.goto('http://localhost:3000/')
 
   await testPageHome(page, language)
-  await testPageAlternate(page, language)
 })

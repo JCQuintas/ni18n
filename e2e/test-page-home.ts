@@ -31,10 +31,10 @@ export const testPageHome = async (
   const pageName = 'home'
 
   await page.click(`[data-id=${pageName}-page-button]`)
-  await page.waitForTimeout(200)
+  await page.waitForTimeout(500)
 
   await page.click(`[data-id=${language}-button]`)
-  await page.waitForTimeout(200)
+  await page.waitForTimeout(500)
 
   expect(await page.innerText('main h1')).toBe(homeData[language].title)
   expect(await page.innerText('main p:first-of-type')).toBe(
