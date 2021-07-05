@@ -2,7 +2,6 @@ import { expect, Page } from '@playwright/test'
 import { Language } from './language'
 import { testFooter } from './test-footer'
 import { testHeader } from './test-header'
-import { urlMapper } from './url-mapper'
 
 const homeData = {
   en: {
@@ -30,7 +29,12 @@ export const testPageHome = async (
   language: Language,
 ): Promise<void> => {
   const pageName = 'home'
-  await page.goto(urlMapper(language, pageName))
+
+  await page.click(`[data-id=${pageName}-page-button]`)
+  await page.waitForTimeout(200)
+
+  await page.click(`[data-id=${language}-button]`)
+  await page.waitForTimeout(200)
 
   expect(await page.innerText('main h1')).toBe(homeData[language].title)
   expect(await page.innerText('main p:first-of-type')).toBe(

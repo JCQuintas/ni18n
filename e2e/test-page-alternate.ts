@@ -2,7 +2,6 @@ import { expect, Page } from '@playwright/test'
 import { Language } from './language'
 import { testFooter } from './test-footer'
 import { testHeader } from './test-header'
-import { urlMapper } from './url-mapper'
 
 const alternateData = {
   en: {
@@ -24,7 +23,12 @@ export const testPageAlternate = async (
   language: Language,
 ): Promise<void> => {
   const pageName = 'alternate'
-  await page.goto(urlMapper(language, pageName))
+
+  await page.click(`[data-id=${pageName}-page-button]`)
+  await page.waitForTimeout(200)
+
+  await page.click(`[data-id=${language}-button]`)
+  await page.waitForTimeout(200)
 
   expect(await page.innerText('main h1')).toBe(alternateData[language].title)
   expect(await page.innerText('main p')).toBe(alternateData[language].content)
