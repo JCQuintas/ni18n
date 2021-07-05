@@ -27,6 +27,18 @@ export const Footer = () => {
           </button>
         </a>
       </Link>
+      <Link href="/default-namespace" passHref>
+        <a>
+          <button
+            data-id="default-namespace-page-button"
+            className={
+              router.pathname === '/default-namespace' ? 'active' : undefined
+            }
+          >
+            {t('defaultNamespacePage')}
+          </button>
+        </a>
+      </Link>
     </footer>
   )
 }
