@@ -1,39 +1,19 @@
 import { expect, Page } from '@playwright/test'
 import { Language } from './language'
-
-const headerData = {
-  en: {
-    english: 'english',
-    portuguese: 'portuguese',
-    spanish: 'spanish',
-  },
-  es: {
-    english: 'inglés',
-    portuguese: 'portugués',
-    spanish: 'español',
-  },
-  pt: {
-    english: 'inglês',
-    portuguese: 'português',
-    spanish: 'espanhol',
-  },
-}
+import { translations } from '../scripts/translations'
 
 export const testHeader = async (
   page: Page,
   language: Language,
 ): Promise<void> => {
+  const namespace = 'translation'
+  const data = translations[language][namespace]
+
   const header = await page.waitForSelector('header')
 
-  expect(
-    await header.waitForSelector(`text=${headerData[language].english}`),
-  ).toBeTruthy()
-  expect(
-    await header.waitForSelector(`text=${headerData[language].portuguese}`),
-  ).toBeTruthy()
-  expect(
-    await header.waitForSelector(`text=${headerData[language].spanish}`),
-  ).toBeTruthy()
+  expect(await header.waitForSelector(`text=${data.english}`)).toBeTruthy()
+  expect(await header.waitForSelector(`text=${data.portuguese}`)).toBeTruthy()
+  expect(await header.waitForSelector(`text=${data.spanish}`)).toBeTruthy()
 
   const activeKey = {
     en: 'english' as const,
@@ -42,6 +22,6 @@ export const testHeader = async (
   }
 
   expect(await page.innerText('header button.active')).toBe(
-    headerData[language][activeKey[language]],
+    data[activeKey[language]],
   )
 }

@@ -2,33 +2,15 @@ import { expect, Page } from '@playwright/test'
 import { Language } from './language'
 import { testFooter } from './test-footer'
 import { testHeader } from './test-header'
-
-const homeData = {
-  en: {
-    title: 'Home Page',
-    content: 'To change languages you can select them at the top right.',
-    extraContent: 'Use the buttons on the footer to navigate between pages.',
-  },
-  es: {
-    title: 'Página Inicial',
-    content:
-      'Para cambiar de idioma, puede seleccionarlos en la parte superior derecha.',
-    extraContent:
-      'Utilice los botones del pie de página para navegar entre páginas.',
-  },
-  pt: {
-    title: 'Página Inicial',
-    content:
-      'Para trocar a língua você pode selecionar elas no topo direito da página.',
-    extraContent: 'Use os botões do rodapé para navegar entre as páginas.',
-  },
-}
+import { translations } from '../scripts/translations'
 
 export const testPageHome = async (
   page: Page,
   language: Language,
 ): Promise<void> => {
   const pageName = 'home'
+  const namespace = 'home'
+  const data = translations[language][namespace]
 
   await page.click(`[data-id=${pageName}-page-button]`)
   await page.waitForTimeout(500)
@@ -36,13 +18,9 @@ export const testPageHome = async (
   await page.click(`[data-id=${language}-button]`)
   await page.waitForTimeout(500)
 
-  expect(await page.innerText('main h1')).toBe(homeData[language].title)
-  expect(await page.innerText('main p:first-of-type')).toBe(
-    homeData[language].content,
-  )
-  expect(await page.innerText('main p:last-of-type')).toBe(
-    homeData[language].extraContent,
-  )
+  expect(await page.innerText('main h1')).toBe(data.title)
+  expect(await page.innerText('main p:first-of-type')).toBe(data.content)
+  expect(await page.innerText('main p:last-of-type')).toBe(data.extraContent)
 
   await testHeader(page, language)
   await testFooter(page, language, pageName)
