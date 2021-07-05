@@ -24,21 +24,30 @@ export const Header = () => {
       <div>
         <Link href={router.pathname} locale={'en'} passHref>
           <a>
-            <button className={router.locale === 'en' ? 'active' : undefined}>
+            <button
+              data-id="en-button"
+              className={router.locale === 'en' ? 'active' : undefined}
+            >
               {t('english')}
             </button>
           </a>
         </Link>
         <Link href={router.pathname} locale={'pt'} passHref>
           <a>
-            <button className={router.locale === 'pt' ? 'active' : undefined}>
+            <button
+              data-id="pt-button"
+              className={router.locale === 'pt' ? 'active' : undefined}
+            >
               {t('portuguese')}
             </button>
           </a>
         </Link>
         <Link href={router.pathname} locale={'es'} passHref>
           <a>
-            <button className={router.locale === 'es' ? 'active' : undefined}>
+            <button
+              data-id="es-button"
+              className={router.locale === 'es' ? 'active' : undefined}
+            >
               {t('spanish')}
             </button>
           </a>

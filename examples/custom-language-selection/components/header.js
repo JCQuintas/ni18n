@@ -25,18 +25,21 @@ export const Header = () => {
       </div>
       <div>
         <button
+          data-id="en-button"
           className={i18n.language === 'en' ? 'active' : undefined}
           onClick={() => changeLanguage(i18n, 'en')}
         >
           {t('english')}
         </button>
         <button
+          data-id="pt-button"
           className={i18n.language === 'pt' ? 'active' : undefined}
           onClick={() => changeLanguage(i18n, 'pt')}
         >
           {t('portuguese')}
         </button>
         <button
+          data-id="es-button"
           className={i18n.language === 'es' ? 'active' : undefined}
           onClick={() => changeLanguage(i18n, 'es')}
         >

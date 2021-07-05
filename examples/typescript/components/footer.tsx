@@ -9,7 +9,10 @@ export const Footer = () => {
     <footer>
       <Link href="/" passHref>
         <a>
-          <button className={router.pathname === '/' ? 'active' : undefined}>
+          <button
+            data-id="home-page-button"
+            className={router.pathname === '/' ? 'active' : undefined}
+          >
             {t('homePage')}
           </button>
         </a>
@@ -17,6 +20,7 @@ export const Footer = () => {
       <Link href="/alternate" passHref>
         <a>
           <button
+            data-id="alternate-page-button"
             className={router.pathname === '/alternate' ? 'active' : undefined}
           >
             {t('alternatePage')}
