@@ -3,5 +3,8 @@
   "portuguese": "português",
   "spanish": "espanhol",
   "homePage": "Página Inicial",
-  "alternatePage": "Página Alternativa"
+  "alternatePage": "Página Alternativa",
+  "defaultNamespacePage": "Página de Namespace Padrão",
+  "title": "Usando o Namespace Padrão",
+  "content": "Esta página usa apenas o namespace padrão e não precisa solicitá-lo."
 }
