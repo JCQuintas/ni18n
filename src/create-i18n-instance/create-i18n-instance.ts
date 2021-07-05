@@ -19,10 +19,8 @@ export const createI18nInstance = (
       return isBrowser()
     },
     react: {
-      useSuspense: isBrowser(),
-    },
-    interpolation: {
-      escapeValue: false,
+      ...options.react,
+      useSuspense: isBrowser() ? options.react?.useSuspense ?? true : false,
     },
   }
 
