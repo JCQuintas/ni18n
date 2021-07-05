@@ -2,7 +2,7 @@ import '../public/styles.css'
 import { appWithI18Next } from 'ni18n'
 import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
-import { ni18nConfig } from '../components/config'
+import { ni18nConfig } from '../ni18n.config'
 
 const MyApp = ({ Component, pageProps }) => {
   const { i18n } = useTranslation()
