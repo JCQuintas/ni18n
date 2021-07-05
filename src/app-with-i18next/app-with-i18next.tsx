@@ -1,4 +1,3 @@
-import type { InitOptions, i18n as I18NextClient } from 'i18next'
 import type { AppProps } from 'next/app'
 import type { ElementType } from 'react'
 import React, { useMemo } from 'react'
@@ -6,6 +5,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics'
 import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
 import { getOptions } from './get-options'
+import { Ni18nOptions } from '../ni18n-options'
 
 /**
  * Use `appWithI18Next` inside your `_app.jsx` file to initialize the `I18nextProvider`.
@@ -17,11 +17,11 @@ import { getOptions } from './get-options'
  * ```
  *
  * @param WrappedComponent The MyApp component
- * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options)
+ * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options) plus the `use` property for plugins
  */
 export const appWithI18Next = (
   WrappedComponent: ElementType<AppProps>,
-  options: InitOptions & { use?: Parameters<I18NextClient['use']>[0][] },
+  options: Ni18nOptions,
 ): ElementType => {
   if (!options) {
     throw new Error('No `options` passed to appWithI18Next')

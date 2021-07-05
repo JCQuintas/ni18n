@@ -1,6 +1,7 @@
-import type { InitOptions, Resource, i18n as I18NextClient } from 'i18next'
+import type { Resource } from 'i18next'
 import type { Namespace } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
+import { Ni18nOptions } from '../ni18n-options'
 import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from './get-namespaces'
 
@@ -26,13 +27,13 @@ type NamespacesNeeded = Namespace
  * })
  * ```
  *
- * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options)
+ * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options) plus the `use` property for plugins
  * @param initialLocale The initial locale for this page
  * @param namespacesNeeded The namespaces that are needed for all the elements in this page
  * @returns an object with a `__ni18n__` property to be used internally
  */
 export const loadTranslations = async (
-  options: InitOptions & { use?: Parameters<I18NextClient['use']>[0][] },
+  options: Ni18nOptions,
   initialLocale?: string,
   namespacesNeeded?: NamespacesNeeded,
 ): Promise<Ni18nState> => {
