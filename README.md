@@ -11,7 +11,7 @@ It gives you freedom to use `i18next` with a lot of different customizations, wh
 - [Installing](#installing)
 - [Usage](#usage)
 - [Examples](#Examples)
-- [F.A.Q.](#f.a.q.)
+- [F.A.Q.](#faq)
 
 ## Installing
 
@@ -27,7 +27,7 @@ npm install i18next react-i18next ni18n
 
 There are only a few simple steps necessary to have you going.
 
-1. [Create next.js config](#create-next.js-config)
+1. [Create next.js config](#create-nextjs-config)
 2. [Create ni18n config](#create-ni18n-config)
 3. [Create \_app](#create-_app)
 4. [Use loadTranslations in your page](#use-loadtranslations-in-your-page)
@@ -117,7 +117,7 @@ Finally, you just need to create your translation files on the `public` folder. 
 
 ## Examples
 
-There are a few ready made projects that you can find in the [examples folder]('./examples). They should cover most of the common use cases and issues you can find while setting up your project with `ni18n`. If you feel like there is anything missing, please submit a PR so we can always improve and add more use cases.
+There are a few ready made projects that you can find in the [examples folder](./examples). They should cover most of the common use cases and issues you can find while setting up your project with `ni18n`. If you feel like there is anything missing, please submit a PR so we can always improve and add more use cases.
 
 - [Simple](./examples/simple)
 - [Typescript](./examples/typescript)
