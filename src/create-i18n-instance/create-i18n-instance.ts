@@ -19,7 +19,7 @@ export const createI18nInstance = (
       return isBrowser()
     },
     react: {
-      useSuspense: true,
+      useSuspense: isBrowser(),
     },
     interpolation: {
       escapeValue: false,
