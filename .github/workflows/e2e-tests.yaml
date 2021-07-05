@@ -26,11 +26,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2.1.2
+      - uses: actions/setup-node@v2.1.2
 
       - name: Install
         run: yarn install --frozen-lockfile
+
       - run: npx playwright install-deps
       - run: npx playwright install
 
@@ -38,10 +38,10 @@ jobs:
         run: yarn build
 
       - name: Install local dependencies on ${{ matrix.example }}
-      - run: cd examples/${{ matrix.example }} && yarn install --frozen-lockfile
+        run: cd examples/${{ matrix.example }} && yarn install --frozen-lockfile
 
       - name: Serve page on ${{ matrix.example }}
         run: cd examples/${{ matrix.example }} && yarn dev &
 
       - name: Run E2E on ${{ matrix.example }}
-      - run: yarn test:e2e
+        run: yarn test:e2e
