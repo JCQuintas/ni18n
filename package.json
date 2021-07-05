@@ -1,7 +1,7 @@
 {
   "name": "ni18n",
   "version": "1.0.0",
-  "description": "Simple NextJS integration with i18next",
+  "description": "Simple and powerful i18next integration for next.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
