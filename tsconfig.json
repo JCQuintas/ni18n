@@ -15,6 +15,11 @@
     "declaration": true,
     "downlevelIteration": true
   },
-  "include": ["src/**/*", "e2e/**/*"],
-  "exclude": ["examples/**/*"]
+  "include": ["src/**/*", "e2e/**/*", "scripts/**/*"],
+  "exclude": ["examples/**/*"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

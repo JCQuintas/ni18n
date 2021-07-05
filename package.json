@@ -9,7 +9,8 @@
     "build": "tsc --project tsconfig.build.json && yarn cp:backend",
     "cp:backend": "cp src/use-backend/package.json dist/use-backend/package.json",
     "test": "jest",
-    "test:e2e": "npx playwright test"
+    "test:e2e": "npx playwright test",
+    "write:translations": "ts-node ./scripts/write-translations.ts"
   },
   "author": "Jose Quintas <juniorquintas@gmail.com>",
   "license": "MIT",
@@ -54,6 +55,7 @@
     "react-i18next": "^11.11.0",
     "simple-git-hooks": "^2.5.1",
     "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   },
   "simple-git-hooks": {
