@@ -1,6 +1,6 @@
 import type { InitOptions, i18n as I18NextClient } from 'i18next'
 
-export type Ni18nOptions = InitOptions & {
+export type Ni18nOptions = Omit<InitOptions, 'initImmediate'> & {
   /**
    * Array of plugins for the i18n instance to use. Accepts the values as `i18n.use()`
    * @default undefined
