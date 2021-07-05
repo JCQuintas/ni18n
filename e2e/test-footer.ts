@@ -5,7 +5,7 @@ import { translations } from '../scripts/translations'
 export const testFooter = async (
   page: Page,
   language: Language,
-  pageName: 'home' | 'alternate',
+  pageName: 'home' | 'alternate' | 'default-namespace',
 ): Promise<void> => {
   const namespace = 'translation'
   const data = translations[language][namespace]
@@ -18,9 +18,14 @@ export const testFooter = async (
     await footer.waitForSelector(`text=${data.alternatePage}`),
   ).toBeTruthy()
 
+  expect(
+    await footer.waitForSelector(`text=${data.defaultNamespacePage}`),
+  ).toBeTruthy()
+
   const activeKey = {
     home: 'homePage' as const,
     alternate: 'alternatePage' as const,
+    'default-namespace': 'defaultNamespacePage' as const,
   }
 
   expect(await page.innerText('footer button.active')).toBe(
