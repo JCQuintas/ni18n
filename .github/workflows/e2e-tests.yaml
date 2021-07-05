@@ -1,0 +1,48 @@
+name: E2E Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # E2E TEST
+  e2e-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        example:
+          [
+            custom-backend,
+            custom-language-selection,
+            custom-location,
+            simple,
+            typescript,
+          ]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2.1.2
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - run: npx playwright install-deps
+
+      - name: Build ${{ example }} Example
+        run: yarn build
+
+      - name: Install local dependencies on ${{ example }}
+        run: cd examples/${{ example }}
+      - run: yarn install --frozen-lockfile
+
+      - name: Serve page on ${{ example }}
+        run: yarn dev &
+
+      - name: Run E2E on ${{ example }}
+        run: cd ../..
+      - run: yarn test:e2e
