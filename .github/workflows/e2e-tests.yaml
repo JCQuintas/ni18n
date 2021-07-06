@@ -1,7 +1,7 @@
 name: E2E Tests
 
 on:
-  push: &onOptions
+  push:
     branches:
       - main
     paths-ignore:
@@ -14,7 +14,17 @@ on:
       - '.prettier*'
       - 'jest.*'
   pull_request:
-    <<: *onOptions
+    branches:
+      - main
+    paths-ignore:
+      - '.github/assets/**'
+      - 'scripts/**/*'
+      - '**/*.md'
+      - '.git*'
+      - '.editor*'
+      - '.npm*'
+      - '.prettier*'
+      - 'jest.*'
 
 jobs:
   # E2E TEST
