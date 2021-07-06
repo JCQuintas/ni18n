@@ -1,0 +1,36 @@
+name: Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release Type - patch | minor | major | 1.2.3
+        default: patch
+        required: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure git
+        run: |
+          git config user.email "juniorquintas@gmail.com"
+          git config user.name "Jose Quintas"
+      - name: Use Node.js
+        uses: actions/setup-node@v2.1.2
+        with:
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      - name: Create Tags
+        run: yarn release -- ${{ github.event.inputs.version }}
+
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

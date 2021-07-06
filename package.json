@@ -15,6 +15,7 @@
     "cp:cjs": "copyup src/use-backend/package.json dist/cjs",
     "test": "jest",
     "test:e2e": "playwright test",
+    "release": "np",
     "write:translations": "ts-node ./scripts/write-translations.ts"
   },
   "author": "Jose Quintas <juniorquintas@gmail.com>",
@@ -54,6 +55,7 @@
     "lint-staged": "^11.0.0",
     "next": "^11.0.1",
     "nodemon": "^2.0.9",
+    "np": "^7.5.0",
     "playwright": "^1.12.3",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
