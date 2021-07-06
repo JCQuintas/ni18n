@@ -1,12 +1,20 @@
 name: E2E Tests
 
 on:
-  push:
+  push: &onOptions
     branches:
       - main
+    paths-ignore:
+      - '.github/assets/**'
+      - 'scripts/**/*'
+      - '**/*.md'
+      - '.git*'
+      - '.editor*'
+      - '.npm*'
+      - '.prettier*'
+      - 'jest.*'
   pull_request:
-    branches:
-      - main
+    <<: *onOptions
 
 jobs:
   # E2E TEST
@@ -31,8 +39,7 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile
 
-      - run: npx playwright install-deps
-      - run: npx playwright install
+      - run: npx playwright install chromium
 
       - name: Build ${{ matrix.example }} Example
         run: yarn build

@@ -15,7 +15,7 @@
     "declaration": true,
     "downlevelIteration": true
   },
-  "include": ["src/**/*", "e2e/**/*", "scripts/**/*"],
+  "include": ["src/**/*", "e2e/**/*", "scripts/**/*", "data/**/*"],
   "exclude": ["examples/**/*"],
   "ts-node": {
     "compilerOptions": {

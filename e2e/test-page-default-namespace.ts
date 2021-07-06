@@ -2,7 +2,7 @@ import { expect, Page } from '@playwright/test'
 import { Language } from './language'
 import { testFooter } from './test-footer'
 import { testHeader } from './test-header'
-import { translations } from '../scripts/translations'
+import { translations } from '../data/translations'
 
 export const testPageDefaultNamespace = async (
   page: Page,

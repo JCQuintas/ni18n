@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test'
 import { Language } from './language'
-import { translations } from '../scripts/translations'
+import { translations } from '../data/translations'
 
 export const testHeader = async (
   page: Page,

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { translations } from './translations'
+import { translations } from '../data/translations'
 import { format } from 'prettier'
 
 type DirSchema = {
