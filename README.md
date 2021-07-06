@@ -32,6 +32,7 @@ There are only a few simple steps necessary to have you going.
 3. [Create \_app](#create-_app)
 4. [Use loadTranslations in your page](#use-loadtranslations-in-your-page)
 5. [Translation files](#translation-files)
+6. [useTranslation](#usetranslation)
 
 ### Create Next.js config
 
@@ -102,18 +103,34 @@ export const getStaticProps = async (props) => {
 
 ### Translation files
 
-Finally, you just need to create your translation files on the `public` folder. The default structure is `/public/locales/{{lng}}/{{ns}}.json`, but it can be changed following the instructions [here](#changing-the-default-translation-files-location)
+As for the files, you just need to create them on the `public` folder. The default structure is `/public/locales/{{lng}}/{{ns}}.json`, but it can be changed following the instructions [here](#changing-the-default-translation-files-location)
 
 ```
 ./public
 └── locales
-    ├── en
+    ├── language1
     │   ├── namespace1.json
     │   └── namespace2.json
-    └── es
+    └── language2
         ├── namespace1.json
         └── namespace2.json
 ```
+
+### useTranslation
+
+Finally, you can call `useTranslation` on your files, or any other `react-i18next` component you may need.
+
+```tsx
+// my-component.tsx
+import { useTranslation } from 'react-i18next'
+
+export const MyComponent = () => {
+  const { t } = useTranslation()
+  return <>{t('myKey')}</>
+}
+```
+
+> Note: `ni18n` only exports `appWithI18Next` and `loadTranslations`. All other functions you need can be imported from `react-i18next`.
 
 ## Examples
 
