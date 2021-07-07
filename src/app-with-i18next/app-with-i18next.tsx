@@ -40,7 +40,7 @@ export const appWithI18Next = (
       )
 
       return instance
-    }, [options, __ni18n__])
+    }, [options, __ni18n__, locale])
 
     return (
       <I18nextProvider i18n={i18nInstance}>
