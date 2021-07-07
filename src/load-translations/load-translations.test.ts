@@ -45,7 +45,6 @@ it('should return correct values when both parameters are strings', async () => 
 
   expect(result).toStrictEqual({
     __ni18n__: {
-      lng: 'test',
       resources: {
         test: {
           ns1: { a: 'a' },
@@ -60,7 +59,6 @@ it('should return correct values when namespace is an array', async () => {
 
   expect(result).toStrictEqual({
     __ni18n__: {
-      lng: 'language',
       resources: {
         language: {
           ns1: { a: '1' },
@@ -76,7 +74,6 @@ it('should return correct values there is no initialLocale but options.lng is se
 
   expect(result).toStrictEqual({
     __ni18n__: {
-      lng: 'test',
       resources: {
         test: {
           ns1: { a: 'a' },
@@ -99,7 +96,6 @@ it('should return an empty resource object if there is no data', async () => {
 
   expect(result).toStrictEqual({
     __ni18n__: {
-      lng: 'test',
       resources: {
         test: {
           ns1: {},

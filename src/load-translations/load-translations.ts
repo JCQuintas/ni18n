@@ -8,7 +8,6 @@ import { getNamespaces } from './get-namespaces'
 export type Ni18nState = {
   __ni18n__: {
     resources: Resource
-    lng?: string
   }
 }
 
@@ -80,7 +79,6 @@ export const loadTranslations = async (
   return {
     __ni18n__: {
       resources: store,
-      lng: selectedLocale,
     },
   }
 }
