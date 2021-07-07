@@ -29,6 +29,10 @@ const schemas: DirSchema[] = [
     example: 'typescript',
     schema: 'public/locales/{{lng}}/{{ns}}.json',
   },
+  {
+    example: 'client-http-translations',
+    schema: 'server/locales/{{lng}}/{{ns}}.json',
+  },
 ]
 
 const languages = Object.keys(translations)
