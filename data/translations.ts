@@ -20,6 +20,11 @@ export const translations = {
       content:
         "This page only uses the default namespace and doesn't need to request it.",
     },
+    client: {
+      title: 'Client Loaded Translations',
+      content:
+        'The translations on this page were loaded through the client side.',
+    },
   },
   es: {
     alternate: {
@@ -44,6 +49,11 @@ export const translations = {
       content:
         'Esta página solo usa el namespace predeterminado y no necesita solicitarlo.',
     },
+    client: {
+      title: 'Traducciones Cargadas por el Cliente',
+      content:
+        'Las traducciones de esta página se cargaron a través del lado del cliente.',
+    },
   },
   pt: {
     alternate: {
@@ -66,6 +76,11 @@ export const translations = {
       title: 'Usando o Namespace Padrão',
       content:
         'Esta página usa apenas o namespace padrão e não precisa solicitá-lo.',
+    },
+    client: {
+      title: 'Traduções Carregadas pelo Cliente',
+      content:
+        'As traduções nesta página foram carregadas pelo lado do cliente.',
     },
   },
 }
