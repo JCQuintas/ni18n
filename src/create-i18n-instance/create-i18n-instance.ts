@@ -20,7 +20,7 @@ export const createI18nInstance = (
     },
     react: {
       ...options.react,
-      useSuspense: isBrowser() ? options.react?.useSuspense ?? true : false,
+      useSuspense: isBrowser() ? options.react?.useSuspense : false,
     },
   }
 
