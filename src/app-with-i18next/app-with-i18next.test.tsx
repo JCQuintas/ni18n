@@ -17,7 +17,7 @@ const Rendered = () => <>Rendered</>
 
 it('should properly render a component', () => {
   const App = appWithI18Next(Rendered, {})
-  render(<App />)
+  render(<App router={{}} />)
 
   const element = screen.getByText('Rendered')
 
