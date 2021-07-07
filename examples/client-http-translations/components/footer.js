@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 
 export const Footer = () => {
-  const { t, ready } = useTranslation()
+  const { t } = useTranslation()
   const router = useRouter()
   return (
     <footer>
@@ -13,7 +13,7 @@ export const Footer = () => {
             data-id="home-page-button"
             className={router.pathname === '/' ? 'active' : undefined}
           >
-            {ready ? t('homePage') : ''}
+            {t('homePage')}
           </button>
         </a>
       </Link>
@@ -23,7 +23,7 @@ export const Footer = () => {
             data-id="alternate-page-button"
             className={router.pathname === '/alternate' ? 'active' : undefined}
           >
-            {ready ? t('alternatePage') : ''}
+            {t('alternatePage')}
           </button>
         </a>
       </Link>
@@ -35,7 +35,7 @@ export const Footer = () => {
               router.pathname === '/default-namespace' ? 'active' : undefined
             }
           >
-            {ready ? t('defaultNamespacePage') : ''}
+            {t('defaultNamespacePage')}
           </button>
         </a>
       </Link>

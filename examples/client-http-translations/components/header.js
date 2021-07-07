@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 
 export const Header = () => {
-  const { t, ready } = useTranslation()
+  const { t } = useTranslation()
   const router = useRouter()
   return (
     <header>
@@ -28,7 +28,7 @@ export const Header = () => {
               data-id="en-button"
               className={router.locale === 'en' ? 'active' : undefined}
             >
-              {ready ? t('english') : ''}
+              {t('english')}
             </button>
           </a>
         </Link>
@@ -38,7 +38,7 @@ export const Header = () => {
               data-id="pt-button"
               className={router.locale === 'pt' ? 'active' : undefined}
             >
-              {ready ? t('portuguese') : ''}
+              {t('portuguese')}
             </button>
           </a>
         </Link>
@@ -48,7 +48,7 @@ export const Header = () => {
               data-id="es-button"
               className={router.locale === 'es' ? 'active' : undefined}
             >
-              {ready ? t('spanish') : ''}
+              {t('spanish')}
             </button>
           </a>
         </Link>

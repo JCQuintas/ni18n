@@ -5,7 +5,6 @@ export const ni18nConfig = {
   fallbackLng: 'en',
   supportedLngs: ['en', 'es', 'pt'],
   ns: ['alternate', 'home', 'translation', 'client'],
-  debug: true,
   backend: {
     loadPath: 'http://localhost:7777/{{lng}}/{{ns}}',
   },
