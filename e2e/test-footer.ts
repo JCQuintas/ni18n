@@ -5,7 +5,7 @@ import { translations } from '../data/translations'
 export const testFooter = async (
   page: Page,
   language: Language,
-  pageName: 'home' | 'alternate' | 'default-namespace',
+  pageName: 'home' | 'alternate' | 'default-namespace' | 'client',
 ): Promise<void> => {
   const namespace = 'translation'
   const data = translations[language][namespace]
@@ -26,6 +26,7 @@ export const testFooter = async (
     home: 'homePage' as const,
     alternate: 'alternatePage' as const,
     'default-namespace': 'defaultNamespacePage' as const,
+    client: 'clientPage' as const,
   }
 
   expect(await page.innerText('footer button.active')).toBe(

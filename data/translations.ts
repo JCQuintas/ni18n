@@ -16,6 +16,7 @@ export const translations = {
       homePage: 'Home Page',
       alternatePage: 'Alternate Page',
       defaultNamespacePage: 'Default Namespace Page',
+      clientPage: 'Client Translations Page',
       title: 'Using Default Namespace',
       content:
         "This page only uses the default namespace and doesn't need to request it.",
@@ -45,6 +46,7 @@ export const translations = {
       homePage: 'Página Inicial',
       alternatePage: 'Página Alternativa',
       defaultNamespacePage: 'Página de Namespace Predeterminado',
+      clientPage: 'Página con Traducciones en Cliente',
       title: 'Utilizando el Namespace Predeterminado',
       content:
         'Esta página solo usa el namespace predeterminado y no necesita solicitarlo.',
@@ -73,6 +75,7 @@ export const translations = {
       homePage: 'Página Inicial',
       alternatePage: 'Página Alternativa',
       defaultNamespacePage: 'Página de Namespace Padrão',
+      clientPage: 'Página com Traduções no Cliente',
       title: 'Usando o Namespace Padrão',
       content:
         'Esta página usa apenas o namespace padrão e não precisa solicitá-lo.',

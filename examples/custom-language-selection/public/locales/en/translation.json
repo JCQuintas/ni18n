@@ -5,6 +5,7 @@
   "homePage": "Home Page",
   "alternatePage": "Alternate Page",
   "defaultNamespacePage": "Default Namespace Page",
+  "clientPage": "Client Translations Page",
   "title": "Using Default Namespace",
   "content": "This page only uses the default namespace and doesn't need to request it."
 }
