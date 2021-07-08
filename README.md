@@ -149,12 +149,12 @@ There are a few ready made projects that you can find in the [examples folder](.
 
 The config schema used by `ni18n` is similar to the one used by `i18next`, but with slight differences listed below.
 
-| property            | behavior          | value                                                                                              | description                                         |
-| ------------------- | ----------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `initImmediate`     | ignored           | <div><div>browser: `true`</div><div>server: `false`</div></div>                                    | controlled so `ni18n` works                         |
-| `preload`           | ignored on server | <div><div>browser: `input \| supportedLngs`</div><div>server: `false \| supportedLngs`</div></div> | server behavior depends on `loadTranslations` input |
-| `react.useSuspense` | ignored on server | <div><div>browser: `input`</div><div>server: `false`</div></div>                                   | input will be respected when in browser             |
-| `use`               | ni18n only        | `undefined`                                                                                        | can be used to load `plugins` into `i18next`        |
+| property            | value                                                                                          | description                                         |
+| ------------------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `initImmediate`     | <div><div>browser: `true`</div><div>server: `false`</div></div>                                | controlled so `ni18n` works                         |
+| `preload`           | <div><div>browser: `input\|supportedLngs`</div><div>server: `false\|supportedLngs`</div></div> | server behavior depends on `loadTranslations` input |
+| `react.useSuspense` | <div><div>browser: `input`</div><div>server: `false`</div></div>                               | input will be respected when in browser             |
+| `use`               | `undefined`                                                                                    | can be used to load `plugins` into `i18next`        |
 
 ### Changing the default translation files location
 
