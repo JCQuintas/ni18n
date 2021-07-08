@@ -27,14 +27,7 @@ npm install i18next react-i18next ni18n
 
 There are only a few simple steps necessary to have you going.
 
-1. [Create next.js config](#create-nextjs-config)
-2. [Create ni18n config](#create-ni18n-config)
-3. [Create \_app](#create-_app)
-4. [Use loadTranslations in your page](#use-loadtranslations-in-your-page)
-5. [Translation files](#translation-files)
-6. [useTranslation](#usetranslation)
-
-### Create Next.js config
+### 1. Create Next.js config
 
 Setup the next config file according to your needs by following the documentation on [next.js i18n-routing](https://nextjs.org/docs/advanced-features/i18n-routing)
 
@@ -48,7 +41,7 @@ module.exports = {
 }
 ```
 
-### Create Ni18n config
+### 2. Create Ni18n config
 
 The `ni18n` config works pretty much as an `i18next` config does. With a few minor differences [listed below](#ni18n-config-vs-i18next-config).
 
@@ -56,7 +49,7 @@ But the basic setup is pretty simple.
 
 ```ts
 // ni18n.config.ts
-import { Ni18nOptions } from 'ni18n'
+import type { Ni18nOptions } from 'ni18n'
 
 export const ni18nConfig: Ni18nOptions = {
   lng: 'en',
@@ -68,7 +61,7 @@ export const ni18nConfig: Ni18nOptions = {
 
 > Note: The `name` and `location` of the file don't really matter, you can call it anything and put it anywhere you want.
 
-### Create \_app
+### 3. Create \_app
 
 In order to initialize the `I18nextProvider`, you will need to wrap your `App` with the `appWithI18Next` function provided by `ni18n`.
 
@@ -82,7 +75,7 @@ const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />
 export default appWithI18Next(MyApp, ni18nConfig)
 ```
 
-### Use `loadTranslations` in your page
+### 4. Use `loadTranslations` in your page
 
 To provide translations to your pages during Static Generation (SSG) or Server Side Rendering (SSR) you will need to use the `loadTranslations` function provided by `ni18n` in either your `getStaticProps` or `getServerSideProps`.
 
@@ -101,7 +94,7 @@ export const getStaticProps = async (props) => {
 }
 ```
 
-### Translation files
+### 5. Translation files
 
 As for the files, you just need to create them on the `public` folder. The default structure is `/public/locales/{{lng}}/{{ns}}.json`, but it can be changed following the instructions [here](#changing-the-default-translation-files-location)
 
@@ -116,7 +109,7 @@ As for the files, you just need to create them on the `public` folder. The defau
         └── namespace2.json
 ```
 
-### useTranslation
+### 6. useTranslation
 
 Finally, you can call `useTranslation` on your files, or any other `react-i18next` component you may need.
 
