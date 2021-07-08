@@ -12,6 +12,9 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
 
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -24,13 +27,7 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install
-        run: yarn install --frozen-lockfile
-
       - name: Create Tags
-        run: yarn release -- ${{ github.event.inputs.version }}
-
-      - name: Publish
-        run: npm publish
+        run: yarn release ${{ github.event.inputs.version }} --no-2fa --no-tests --no-release-draft
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

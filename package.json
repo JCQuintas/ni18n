@@ -2,6 +2,10 @@
   "name": "ni18n",
   "version": "0.0.1",
   "description": "Simple and powerful i18next integration for next.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JCQuintas/ni18n"
+  },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -15,7 +19,7 @@
     "cp:cjs": "copyup src/use-backend/package.json dist/cjs",
     "test": "jest",
     "test:e2e": "playwright test",
-    "release": "np",
+    "release": "npx np",
     "write:translations": "ts-node ./scripts/write-translations.ts"
   },
   "author": "Jose Quintas <juniorquintas@gmail.com>",
