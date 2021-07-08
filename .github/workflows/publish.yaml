@@ -12,9 +12,6 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
 
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
     steps:
       - uses: actions/checkout@v2
 
@@ -28,6 +25,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Create Tags
-        run: yarn release ${{ github.event.inputs.version }} --no-2fa --no-tests --no-release-draft
+        run: yarn release ${{ github.event.inputs.version }} --no-2fa --no-tests --no-release-draft --no-publish
+
+      - name: Publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
