@@ -9,9 +9,6 @@ export const ni18nConfig = {
     loadPath: 'http://localhost:7777/{{lng}}/{{ns}}',
   },
   partialBundledLanguages: true,
-  react: {
-    useSuspense: false,
-  },
   preload: false,
   /**
    * On a real implementation it would be best to use something like a
