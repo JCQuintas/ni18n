@@ -32,10 +32,10 @@ export const appWithI18Next = (
     const { locale } = props.router
 
     const i18nInstance = useMemo(() => {
-      const { use: plugins, ...config } = options
+      const { use: plugins, ...i18nextOptions } = options
 
       const { instance } = createI18nInstance(
-        getOptions({ ...config, lng: locale }, __ni18n__),
+        getOptions({ ...i18nextOptions, lng: locale }, __ni18n__),
         plugins,
       )
 

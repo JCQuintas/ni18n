@@ -40,29 +40,29 @@ export const loadTranslations = async (
     throw new Error('No `options` passed to loadTranslations')
   }
 
-  const { use: plugins, ...config } = options
+  const { use: plugins, ...i18nextOptions } = options
 
   const { instance, init } = createI18nInstance(
     {
-      ...config,
+      ...i18nextOptions,
       lng: initialLocale,
-      preload: !initialLocale && config.supportedLngs,
     },
     plugins,
   )
 
   await init
 
-  const selectedLocale = initialLocale || config.lng
+  const selectedLocale = initialLocale || i18nextOptions.lng
   const locales = Array.from(
     new Set(
-      [selectedLocale, ...getFallbackLocales(initialLocale, config)].filter(
-        Boolean,
-      ) as string[],
+      [
+        selectedLocale,
+        ...getFallbackLocales(initialLocale, i18nextOptions),
+      ].filter(Boolean) as string[],
     ),
   )
 
-  const namespaces = getNamespaces(config, namespacesNeeded)
+  const namespaces = getNamespaces(i18nextOptions, namespacesNeeded)
 
   const store = Object.fromEntries(
     locales.map((locale) => [

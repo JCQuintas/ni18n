@@ -15,6 +15,7 @@ export const createI18nInstance = (
   const config: InitOptions = {
     ...getBackendConfig(options),
     ...options,
+    preload: !options.lng && options.supportedLngs,
     get initImmediate(): boolean {
       return isBrowser()
     },
