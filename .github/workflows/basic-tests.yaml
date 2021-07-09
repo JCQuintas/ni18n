@@ -33,10 +33,11 @@ jobs:
         env:
           CI: true
 
-      - uses: codecov/codecov-action@v1
-        if: ${{ matrix.node-version  == '12.x'}}
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
         with:
-          flags: unittests
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: Unit
 
   # PRETTIER
   prettier:
