@@ -18,10 +18,10 @@ export const testPageClient = async (
 
   if (hasClientPage) {
     await page.click(`[data-id=${pageName}-page-button]`)
-    await page.waitForTimeout(500)
+    await page.waitForTimeout(1000)
 
     await page.click(`[data-id=${language}-button]`)
-    await page.waitForTimeout(500)
+    await page.waitForTimeout(1000)
 
     expect(await page.innerText('main h1')).toBe(data.title)
     expect(await page.innerText('main p')).toBe(data.content)

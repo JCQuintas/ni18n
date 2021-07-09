@@ -29,16 +29,10 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Test
-        run: yarn test
+        run: yarn test --coverage
         env:
           CI: true
 
-  # COVERAGE
-  coverage:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
       - uses: codecov/codecov-action@v1
         with:
           flags: unittests
