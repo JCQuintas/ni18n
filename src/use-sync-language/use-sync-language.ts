@@ -15,7 +15,7 @@ export const useSyncLanguage = (language?: string): { i18n: I18nClient } => {
 
   useEffect(() => {
     if (i18n.language !== language) i18n.changeLanguage(language)
-  }, [language, i18n])
+  }, [language, i18n.language])
 
   return { i18n }
 }
