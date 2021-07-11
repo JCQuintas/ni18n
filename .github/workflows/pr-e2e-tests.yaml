@@ -1,9 +1,19 @@
-name: E2E Tests
+# Run only a subset of e2e tests during PR so it doesn't eat up the quota
+name: PR E2E Tests
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    paths-ignore:
+      - '.github/assets/**'
+      - 'scripts/**/*'
+      - '**/*.md'
+      - '.git*'
+      - '.editor*'
+      - '.npm*'
+      - '.prettier*'
+      - 'jest.*'
 
 jobs:
   # E2E TEST
@@ -12,15 +22,7 @@ jobs:
 
     strategy:
       matrix:
-        example:
-          [
-            client-http-translations,
-            custom-backend,
-            custom-language-selection,
-            custom-location,
-            simple,
-            typescript,
-          ]
+        example: [typescript]
 
     steps:
       - uses: actions/checkout@v2

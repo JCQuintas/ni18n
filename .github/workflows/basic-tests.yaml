@@ -33,9 +33,11 @@ jobs:
         env:
           CI: true
 
-      - uses: codecov/codecov-action@v1
+      - name: Codecov
+        uses: codecov/codecov-action@v1
+        if: ${{ matrix.node-version  == '12.x'}}
         with:
-          flags: unittests
+          flags: Unit
 
   # PRETTIER
   prettier:
