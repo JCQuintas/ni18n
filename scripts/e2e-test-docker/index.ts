@@ -22,6 +22,14 @@ class E2ETestsDocker extends Command {
     const { argv } = this.parse(E2ETestsDocker)
     const exampleFolders = getSelectedExamples(argv)
 
+    if (exampleFolders.length === 0) {
+      console.log(
+        chalk.yellow('Run this command with one or more of the options below:'),
+      )
+      ;['all', ...examples].forEach((v) => console.log(v))
+      process.exitCode = 1
+    }
+
     const immediate = exampleFolders.length === 1
 
     if (immediate) {
@@ -36,7 +44,6 @@ class E2ETestsDocker extends Command {
         )
         .catch((error: Error) => {
           console.error(chalk.red(`${error.message}`))
-          console.error(chalk.red(`Build failed with code 1.`))
           process.exitCode = 1
         })
     } else {
@@ -45,6 +52,7 @@ class E2ETestsDocker extends Command {
           title: folder,
           task: () =>
             runE2EDocker({ exampleFolder: folder, immediate }).catch(() => {
+              process.exitCode = 1
               throw new Error(
                 `${folder} => run the script again with only ${folder}`,
               )
