@@ -4,7 +4,7 @@ const config: PlaywrightTestConfig = {
   testDir: './e2e',
   projects: [
     {
-      name: 'Chrome ',
+      name: 'Chrome',
       use: {
         browserName: 'chromium',
       },

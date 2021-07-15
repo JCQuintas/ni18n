@@ -1,0 +1,6 @@
+.*/
+coverage/
+dist/
+scripts/
+**/node_modules/**
+Dockerfile.*
