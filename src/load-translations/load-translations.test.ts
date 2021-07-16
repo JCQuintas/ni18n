@@ -10,22 +10,8 @@ const createI18nInstanceMock = (
     services: {
       resourceStore: {
         data: {
-          test: {
-            ns1: {
-              a: 'a',
-            },
-            ns2: {
-              b: 'b',
-            },
-          },
-          language: {
-            ns1: {
-              a: '1',
-            },
-            ns2: {
-              b: '2',
-            },
-          },
+          test: { ns1: { a: 'a' }, ns2: { b: 'b' } },
+          language: { ns1: { a: '1' }, ns2: { b: '2' } },
         },
       },
     },
@@ -69,15 +55,18 @@ it('should return correct values when namespace is an array', async () => {
   })
 })
 
-it('should return correct values there is no initialLocale but options.lng is set', async () => {
-  const result = await loadTranslations({ lng: 'test' }, undefined, 'ns1')
+it('should return correct values when there is no initialLocale but options.supportedLngs is set', async () => {
+  const result = await loadTranslations(
+    { lng: 'test', supportedLngs: ['test', 'language'] },
+    undefined,
+    'ns1',
+  )
 
   expect(result).toStrictEqual({
     __ni18n__: {
       resources: {
-        test: {
-          ns1: { a: 'a' },
-        },
+        test: { ns1: { a: 'a' } },
+        language: { ns1: { a: '1' } },
       },
     },
   })
@@ -92,14 +81,17 @@ it('should return an empty resource object if there is no data', async () => {
     },
     init: Promise.resolve(),
   })
-  const result = await loadTranslations({ lng: 'test' }, undefined, 'ns1')
+  const result = await loadTranslations(
+    { lng: 'test', supportedLngs: ['test', 'language'] },
+    undefined,
+    'ns1',
+  )
 
   expect(result).toStrictEqual({
     __ni18n__: {
       resources: {
-        test: {
-          ns1: {},
-        },
+        test: { ns1: {} },
+        language: { ns1: {} },
       },
     },
   })

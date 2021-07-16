@@ -17,7 +17,7 @@ const App = appWithI18Next(Rendered, {
 })
 
 const wrapper = ({ children }: PropsWithChildren<unknown>) => (
-  <App router={{}}>{children}</App>
+  <App router={{ locale: 'en' }}>{children}</App>
 )
 
 it('should properly change the i18n selected language when receiving new input', async () => {

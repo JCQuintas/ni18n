@@ -52,11 +52,10 @@ export const loadTranslations = async (
 
   await init
 
-  const selectedLocale = initialLocale || i18nextOptions.lng
   const locales = Array.from(
     new Set(
       [
-        selectedLocale,
+        initialLocale,
         ...getFallbackLocales(initialLocale, i18nextOptions),
       ].filter(Boolean) as string[],
     ),
