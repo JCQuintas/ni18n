@@ -1,7 +1,7 @@
 import type { Resource } from 'i18next'
 import type { Namespace } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
-import { Ni18nOptions } from '../ni18n-options'
+import type { Ni18nOptions } from '../ni18n-options'
 import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from './get-namespaces'
 
