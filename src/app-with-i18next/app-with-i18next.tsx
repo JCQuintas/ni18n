@@ -4,8 +4,8 @@ import React, { useMemo } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
-import { getOptions } from './get-options'
-import { Ni18nOptions } from '../ni18n-options'
+import type { Ni18nOptions } from '../ni18n-options'
+import type { Ni18nState } from '../load-translations'
 
 /**
  * Use `appWithI18Next` inside your `_app.jsx` file to initialize the `I18nextProvider`.
@@ -28,14 +28,14 @@ export const appWithI18Next = (
   }
 
   const WithI18Next = (props: AppProps) => {
-    const { __ni18n__ } = props.pageProps || {}
+    const { __ni18n__ } = (props.pageProps || {}) as Partial<Ni18nState>
     const { locale } = props.router
 
     const i18nInstance = useMemo(() => {
       const { use: plugins, ...i18nextOptions } = options
 
       const { instance } = createI18nInstance(
-        getOptions({ ...i18nextOptions, lng: locale }, __ni18n__),
+        { ...i18nextOptions, lng: locale, ...__ni18n__ },
         plugins,
       )
 
