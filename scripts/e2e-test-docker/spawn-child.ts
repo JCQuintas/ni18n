@@ -1,5 +1,7 @@
 import { spawn } from 'child_process'
 
+const textToDisplay = ['.spec.ts:', ' passed (', 'debug']
+
 export const spawnChild = async (
   command: string,
   args: string[],
@@ -13,7 +15,7 @@ export const spawnChild = async (
     if (
       immediate &&
       text &&
-      (text.includes('.spec.ts:') || text.includes(' passed ('))
+      textToDisplay.some((bypass) => text.includes(bypass))
     ) {
       console.log(text)
     }
