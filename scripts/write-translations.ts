@@ -81,15 +81,17 @@ const makeDirs = (filepath: string) => {
     })
 }
 
-targets.forEach((target) => {
-  if (target.namespaces.includes(target.namespace)) {
-    const data = JSON.stringify(
-      translations[target.language as keyof typeof translations][
-        target.namespace as keyof typeof translations['en']
-      ],
-    )
+if (require.main === module) {
+  targets.forEach((target) => {
+    if (target.namespaces.includes(target.namespace)) {
+      const data = JSON.stringify(
+        translations[target.language as keyof typeof translations][
+          target.namespace as keyof typeof translations['en']
+        ],
+      )
 
-    makeDirs(target.path)
-    fs.writeFileSync(target.path, format(data, { parser: 'json' }))
-  }
-})
+      makeDirs(target.path)
+      fs.writeFileSync(target.path, format(data, { parser: 'json' }))
+    }
+  })
+}
