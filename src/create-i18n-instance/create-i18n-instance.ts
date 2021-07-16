@@ -19,10 +19,6 @@ export const createI18nInstance = (
     get initImmediate(): boolean {
       return isBrowser()
     },
-    react: {
-      ...options.react,
-      useSuspense: isBrowser() ? options.react?.useSuspense : false,
-    },
   }
 
   const instance = i18n.createInstance(config)

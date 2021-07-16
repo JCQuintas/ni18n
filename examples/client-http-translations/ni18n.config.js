@@ -10,6 +10,13 @@ export const ni18nConfig = {
   },
   partialBundledLanguages: true,
   /**
+   * Set useSuspense to `true` in case you are using it
+   * Else it should be false to prevent the SSR from getting out of sync
+   */
+  react: {
+    useSuspense: false,
+  },
+  /**
    * `true` will download all namespaces for all languages on the first page visit
    * `false` will download all namespaces for current language and default language
    */

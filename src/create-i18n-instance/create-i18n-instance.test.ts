@@ -29,7 +29,7 @@ it('should create an i18n instance and call use with the plugins', () => {
     .spyOn(i18n, 'createInstance')
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .mockReturnValue({ use, init } as any)
-  createI18nInstance({ react: { useSuspense: false } }, [Plugin])
+  createI18nInstance({}, [Plugin])
 
   expect(init).toHaveBeenCalledTimes(1)
   expect(use).toHaveBeenCalledWith(Plugin)

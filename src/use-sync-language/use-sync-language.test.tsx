@@ -23,13 +23,15 @@ const wrapper = ({ children }: PropsWithChildren<unknown>) => (
 it('should properly change the i18n selected language when receiving new input', async () => {
   const initialProps: { language?: string } = { language: 'en' }
 
-  const { rerender, result } = renderHook(
+  const { rerender, result, waitForNextUpdate } = renderHook(
     ({ language }) => useSyncLanguage(language),
     {
       wrapper,
       initialProps,
     },
   )
+
+  await waitForNextUpdate()
 
   expect(result.current.i18n.language).toBe('en')
 
