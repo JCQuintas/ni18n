@@ -12,9 +12,11 @@ class Plugin {
   init() {}
 }
 
-it('should create an i18n instance regardless of input', () => {
+it('should create an i18n instance regardless of input', async () => {
   isBrowserMock.mockReturnValue(false)
-  const { instance } = createI18nInstance({})
+  const { instance, init } = createI18nInstance({})
+
+  await init
 
   expect(instance).toBeDefined()
   expect(instance.isInitialized).toBe(true)

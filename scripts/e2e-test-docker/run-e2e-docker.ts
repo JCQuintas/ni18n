@@ -4,11 +4,13 @@ import { spawnChild } from './spawn-child'
 
 type RunE2EDocker = {
   exampleFolder: string
+  build: boolean
   immediate?: boolean
 }
 
 export const runE2EDocker = async ({
   exampleFolder,
+  build,
   immediate,
 }: RunE2EDocker): Promise<string> => {
   if (existsSync(join(process.cwd(), 'examples', exampleFolder))) {
@@ -17,6 +19,8 @@ export const runE2EDocker = async ({
       'build',
       '--build-arg',
       `EXAMPLE_FOLDER=${exampleFolder}`,
+      '--build-arg',
+      `INIT_COMMAND=${build ? 'start' : 'dev'}`,
       '-q',
       '.',
     ])

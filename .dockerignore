@@ -3,4 +3,6 @@ coverage/
 dist/
 scripts/
 **/node_modules/**
+**/.next/**
 Dockerfile.*
+src/**/*.test.*
