@@ -20,12 +20,5 @@ export const getBackendConfig = (
     }
   }
 
-  // Client side backend config
-  if (isBrowser()) {
-    return {
-      preload: options.supportedLngs,
-    }
-  }
-
   return {}
 }
