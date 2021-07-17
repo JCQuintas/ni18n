@@ -16,11 +16,6 @@ export const ni18nConfig = {
     useSuspense: false,
   },
   /**
-   * `true` will download all namespaces for all languages on the first page visit
-   * `false` will download all namespaces for current language and default language
-   */
-  preload: false,
-  /**
    * On a real implementation it would be best to use something like a
    * https://github.com/i18next/i18next-chained-backend together with
    * https://github.com/i18next/i18next-localstorage-backend
