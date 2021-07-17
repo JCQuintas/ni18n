@@ -27,6 +27,12 @@
         "no-undef": 0,
         "@typescript-eslint/no-var-requires": 0
       }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+      }
     }
   ]
 }

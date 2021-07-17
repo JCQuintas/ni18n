@@ -20,7 +20,12 @@ WORKDIR /app/examples/${EXAMPLE_FOLDER}
 
 RUN yarn install
 
+ARG INIT_COMMAND="start"
+ENV INIT_COMMAND_ENV=$INIT_COMMAND
+
+RUN test "$INIT_COMMAND_ENV" = "start" && yarn build || exit 0
+
 EXPOSE 3000
 EXPOSE 7777
 
-CMD ["/bin/sh", "-c", "yarn dev & sleep 5 && cd /app && yarn test:e2e"]
+CMD ["/bin/sh", "-c", "yarn $INIT_COMMAND_ENV & sleep 5 && cd /app && yarn test:e2e"]

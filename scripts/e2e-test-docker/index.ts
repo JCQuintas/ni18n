@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import { readdirSync } from 'fs'
 import { join } from 'path'
 import chalk from 'chalk'
@@ -23,8 +23,18 @@ const getSelectedExamples = async (argv: string[]): Promise<string[]> => {
 class E2ETestsDocker extends Command {
   static strict = false
 
+  static flags = {
+    build: flags.boolean({
+      char: 'b',
+      default: true,
+      description: 'Wether to build before running or to run in dev mode.',
+      allowNo: true,
+    }),
+  }
+
   async run(): Promise<void> {
-    const { argv } = this.parse(E2ETestsDocker)
+    const { argv, flags } = this.parse(E2ETestsDocker)
+    const build = flags.build
     const exampleFolders = await getSelectedExamples(argv)
 
     const immediate = exampleFolders.length === 1
@@ -32,6 +42,7 @@ class E2ETestsDocker extends Command {
     if (immediate) {
       await runE2EDocker({
         exampleFolder: exampleFolders[0],
+        build,
         immediate,
       })
         .then((exampleFolder) =>
@@ -48,12 +59,14 @@ class E2ETestsDocker extends Command {
         exampleFolders.map((folder) => ({
           title: folder,
           task: () =>
-            runE2EDocker({ exampleFolder: folder, immediate }).catch(() => {
-              process.exitCode = 1
-              throw new Error(
-                `${folder} => run the script again with only ${folder}`,
-              )
-            }),
+            runE2EDocker({ exampleFolder: folder, build, immediate }).catch(
+              () => {
+                process.exitCode = 1
+                throw new Error(
+                  `${folder} => run the script again with only ${folder}`,
+                )
+              },
+            ),
         })),
         { concurrent: true, exitOnError: false },
       )

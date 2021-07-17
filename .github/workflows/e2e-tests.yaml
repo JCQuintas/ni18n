@@ -31,14 +31,17 @@ jobs:
 
       - run: npx playwright install chromium
 
-      - name: Build ${{ matrix.example }} Example
-        run: yarn build
+      - name: Build ni18n
+        run: yarn build:esm
 
       - name: Install local dependencies on ${{ matrix.example }}
         run: cd examples/${{ matrix.example }} && yarn install --frozen-lockfile
 
-      - name: Serve page on ${{ matrix.example }}
-        run: cd examples/${{ matrix.example }} && yarn dev &
+      - name: Build ${{ matrix.example }}
+        run: cd examples/${{ matrix.example }} && yarn build
 
-      - name: Run E2E on ${{ matrix.example }}
+      - name: Serve ${{ matrix.example }}
+        run: cd examples/${{ matrix.example }} && yarn start &
+
+      - name: Run E2E for ${{ matrix.example }}
         run: yarn test:e2e
