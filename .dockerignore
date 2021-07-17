@@ -4,3 +4,4 @@ dist/
 scripts/
 **/node_modules/**
 Dockerfile.*
+src/**/*.test.*
