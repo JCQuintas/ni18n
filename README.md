@@ -126,7 +126,7 @@ export const MyComponent = () => {
 
 ## Examples
 
-There are a few ready made projects that you can find in the [examples folder](./examples). They should cover most of the common use cases and issues you can find while setting up your project with `ni18n`. If you feel like there is anything missing, please submit a PR so we can always improve and add more use cases.
+There are a few ready made projects that you can find in the [examples folder](./examples). They should cover some of the common use cases and issues you can find while setting up your project with `ni18n`. If you feel like there is anything missing, please submit a PR so we can always improve and add more use cases.
 
 - [Simple](./examples/simple)
 - [Typescript](./examples/typescript)
@@ -141,10 +141,9 @@ There are a few ready made projects that you can find in the [examples folder](.
 
 The config schema used by `ni18n` is similar to the one used by `i18next`, but with slight differences listed below.
 
-| property  | value                                                                                          | description                                         |
-| --------- | ---------------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `preload` | <div><div>browser: `input\|supportedLngs`</div><div>server: `false\|supportedLngs`</div></div> | server behavior depends on `loadTranslations` input |
-| `use`     | `undefined`                                                                                    | can be used to load `plugins` into `i18next`        |
+| property | value       | description                                  |
+| -------- | ----------- | -------------------------------------------- |
+| `use`    | `undefined` | can be used to load `plugins` into `i18next` |
 
 ### Changing the default translation files location
 
@@ -162,6 +161,6 @@ You can check the [custom-backend](examples/custom-backend/ni18n.config.js) exam
 
 ### Loading translations on client side using HTTP/Other
 
-Support for client loaded translations is baked in and should not require many changes from your side. As show in the [client-http-translations](examples/client-http-translations/ni18n.config.js), simply add a backend plugin, and set the options `partialBundledLanguages` and `preload`. Then you can have a page that doesn't have `getStaticProps` nor `getServerSideProps`.
+Support for client loaded translations is baked in and should not require many changes from your side. As show in the [client-http-translations](examples/client-http-translations/ni18n.config.js), simply add a backend plugin, and set the options `partialBundledLanguages` and `react.useSuspense`. Then you can have a page that doesn't have `getStaticProps` nor `getServerSideProps`.
 
 But remember you will need to check for the `ready` variable in `const { t, ready } = useTranslation('client')` before using `t`, or you might get an error.

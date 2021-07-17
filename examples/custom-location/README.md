@@ -3,3 +3,8 @@
 Shows how simple it is to change the translation files out of the default location.
 
 You only need to change the `backend` property on your config. The example can be seen at [./components/config.js](./components/config.js)
+
+## Notable files
+
+- [ni18n.config.js](./ni18n.config.js)
+- [public/custom/\*](public/custom)
