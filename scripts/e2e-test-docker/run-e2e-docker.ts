@@ -21,6 +21,8 @@ export const runE2EDocker = async ({
       `EXAMPLE_FOLDER=${exampleFolder}`,
       '--build-arg',
       `INIT_COMMAND=${build ? 'start' : 'dev'}`,
+      `-t`,
+      `${exampleFolder}:${build ? 'build' : 'no-build'}`,
       '-q',
       '.',
     ])
