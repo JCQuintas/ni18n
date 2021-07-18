@@ -7,6 +7,10 @@ import type { i18n as I18nClient } from 'i18next'
  * It will make sure to set the `current language` properly in `i18next` based
  * on the language parameter you pass to it.
  *
+ * Note that this can cause an error when rendering on the server. This happens
+ * because `useTranslation` returns a Suspense. To fix it, either enable react
+ * Suspense Mode, or set `react.useSuspense = false` in your `ni18n-options.ts`
+ *
  * @param language The language the translations should be in
  * @returns an i18n instance
  */
