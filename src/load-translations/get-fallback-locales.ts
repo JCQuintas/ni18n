@@ -1,11 +1,6 @@
 import { InitOptions } from 'i18next'
 
-export const getFallbackLocales = (
-  initialLocale: string | undefined,
-  options: InitOptions,
-): string[] => {
-  if (!initialLocale && options.supportedLngs) return [...options.supportedLngs]
-
+export const getFallbackLocales = (options: InitOptions): string[] => {
   const { fallbackLng } = options
   if (typeof fallbackLng === 'string') return [fallbackLng]
   if (Array.isArray(fallbackLng)) return [...fallbackLng]

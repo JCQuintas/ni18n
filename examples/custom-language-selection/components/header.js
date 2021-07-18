@@ -1,5 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
+/**
+ * Manually change the language and store the selected on localStorage
+ */
 const changeLanguage = (i18n, language) => {
   window.localStorage.setItem('MY_LANGUAGE', language)
   i18n.changeLanguage(language)

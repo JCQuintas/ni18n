@@ -1,10 +1,12 @@
 const supportedLngs = ['en', 'es', 'pt']
 
 export const ni18nConfig = {
-  fallbackLng: 'en',
+  /**
+   * Set `fallbackLng` to the `supportedLngs` array in order for them all to be loaded
+   */
+  fallbackLng: supportedLngs,
   supportedLngs,
   ns: ['alternate', 'home', 'translation'],
-  preload: supportedLngs,
   react: {
     useSuspense: false,
   },

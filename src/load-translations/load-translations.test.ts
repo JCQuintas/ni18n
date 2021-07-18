@@ -55,9 +55,9 @@ it('should return correct values when namespace is an array', async () => {
   })
 })
 
-it('should return correct values when there is no initialLocale but options.supportedLngs is set', async () => {
+it('should return correct values when there is no initialLocale but options.fallbackLng is set', async () => {
   const result = await loadTranslations(
-    { lng: 'test', supportedLngs: ['test', 'language'] },
+    { lng: 'test', fallbackLng: ['test', 'language'] },
     undefined,
     'ns1',
   )
@@ -82,7 +82,7 @@ it('should return an empty resource object if there is no data', async () => {
     init: Promise.resolve(),
   })
   const result = await loadTranslations(
-    { lng: 'test', supportedLngs: ['test', 'language'] },
+    { lng: 'test', fallbackLng: ['test', 'language'] },
     undefined,
     'ns1',
   )
