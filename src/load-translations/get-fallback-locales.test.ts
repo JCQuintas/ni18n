@@ -1,15 +1,7 @@
 import { getFallbackLocales } from './get-fallback-locales'
 
-it('should return supportedLngs when initialLocale is undefined', () => {
-  const result = getFallbackLocales(undefined, {
-    supportedLngs: ['test', 'language'],
-  })
-
-  expect(result).toStrictEqual(['test', 'language'])
-})
-
 it('should return fallbackLng if it is a string', () => {
-  const result = getFallbackLocales('en-test', {
+  const result = getFallbackLocales({
     fallbackLng: 'test',
   })
 
@@ -17,7 +9,7 @@ it('should return fallbackLng if it is a string', () => {
 })
 
 it('should return fallbackLng if it is an array', () => {
-  const result = getFallbackLocales('en-test', {
+  const result = getFallbackLocales({
     fallbackLng: ['test', 'language'],
   })
 
@@ -25,7 +17,7 @@ it('should return fallbackLng if it is an array', () => {
 })
 
 it('should return flattened values of fallbackLng if it is an object', () => {
-  const result = getFallbackLocales('en-test', {
+  const result = getFallbackLocales({
     fallbackLng: {
       test: ['test', 'test2'],
       language: ['language'],
@@ -36,7 +28,7 @@ it('should return flattened values of fallbackLng if it is an object', () => {
 })
 
 it('should return empty array if fallbackLng is null', () => {
-  const result = getFallbackLocales('en-test', {
+  const result = getFallbackLocales({
     // @ts-expect-error testing behavior
     fallbackLng: null,
   })
