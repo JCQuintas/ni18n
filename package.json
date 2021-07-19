@@ -54,6 +54,7 @@
     "@typescript-eslint/parser": "^4.28.3",
     "chalk": "^4.1.1",
     "copyfiles": "^2.4.1",
+    "enquirer": "^2.3.6",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^24.3.6",
