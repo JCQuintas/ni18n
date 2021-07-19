@@ -162,5 +162,3 @@ You can check the [custom-backend](examples/custom-backend/ni18n.config.js) exam
 ### Loading translations on client side using HTTP/Other
 
 Support for client loaded translations is baked in and should not require many changes from your side. As show in the [client-http-translations](examples/client-http-translations/ni18n.config.js), simply add a backend plugin, and set the options `partialBundledLanguages` and `react.useSuspense`. Then you can have a page that doesn't have `getStaticProps` nor `getServerSideProps`.
-
-But remember you will need to check for the `ready` variable in `const { t, ready } = useTranslation('client')` before using `t`, or you might get an error.

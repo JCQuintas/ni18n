@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next\"",
-    "build": "node server/index.js & next build && kill $(lsof -i tcp:7777 | head -n 2 | tail -n 1 | awk '{print $2}') || exit 0",
+    "build": "node server/index.js & next build; kill $(lsof -i tcp:7777 | head -n 2 | tail -n 1 | awk '{print $2}')",
     "start": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next start\""
   },
   "dependencies": {

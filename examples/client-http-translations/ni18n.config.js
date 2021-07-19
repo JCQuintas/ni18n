@@ -10,7 +10,7 @@ export const ni18nConfig = {
   partialBundledLanguages: true,
   /**
    * Set useSuspense to `true` in case you are using it
-   * Else it should be false to prevent the SSR from getting out of sync
+   * Else it should be `false` to prevent the SSR from getting out of sync
    */
   react: {
     useSuspense: false,

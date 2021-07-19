@@ -6,7 +6,7 @@ export const ni18nConfig = {
    */
   fallbackLng: supportedLngs,
   supportedLngs,
-  ns: ['alternate', 'home', 'translation'],
+  ns: ['alternate', 'home', 'translation', 'client'],
   react: {
     useSuspense: false,
   },

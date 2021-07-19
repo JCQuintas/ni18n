@@ -2,6 +2,7 @@ import 'react-i18next'
 
 // import all namespaces (for the default language, only)
 import alternate from './public/locales/en/alternate.json'
+import client from './public/locales/en/client.json'
 import home from './public/locales/en/home.json'
 import translation from './public/locales/en/translation.json'
 
@@ -11,6 +12,7 @@ declare module 'react-i18next' {
       alternate: typeof alternate
       home: typeof home
       translation: typeof translation
+      client: typeof client
     }
   }
 }

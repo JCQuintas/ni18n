@@ -39,6 +39,16 @@ export const Footer = () => {
           </button>
         </a>
       </Link>
+      <Link href="/client" passHref>
+        <a>
+          <button
+            data-id="client-page-button"
+            className={router.pathname === '/client' ? 'active' : undefined}
+          >
+            {t('clientPage')}
+          </button>
+        </a>
+      </Link>
     </footer>
   )
 }
