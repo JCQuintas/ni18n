@@ -5,17 +5,24 @@ export const getBackendConfig = (
   options: InitOptions,
 ): Record<string, unknown> => {
   const hasCustomBackend = options.backend
+  const localePath = '/locales/{{lng}}/{{ns}}'
 
   // Server side backend config
   if (!isBrowser() && !hasCustomBackend) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const path = require('path')
-    const localePath = './public/locales/{{lng}}/{{ns}}'
 
     return {
       backend: {
-        addPath: path.resolve(process.cwd(), `${localePath}.missing.json`),
-        loadPath: path.resolve(process.cwd(), `${localePath}.json`),
+        loadPath: path.resolve(process.cwd(), `./public/${localePath}.json`),
+      },
+    }
+  }
+
+  if (isBrowser() && !hasCustomBackend) {
+    return {
+      backend: {
+        loadPath: `${localePath}.json`,
       },
     }
   }

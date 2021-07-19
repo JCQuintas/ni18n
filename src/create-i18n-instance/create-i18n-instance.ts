@@ -14,6 +14,11 @@ export const createI18nInstance = (
   const config: InitOptions = {
     ...getBackendConfig(options),
     ...options,
+    partialBundledLanguages: options.partialBundledLanguages ?? true,
+    react: {
+      ...options.react,
+      useSuspense: options.react?.useSuspense ?? false,
+    },
   }
 
   const instance = i18n.createInstance(config)
