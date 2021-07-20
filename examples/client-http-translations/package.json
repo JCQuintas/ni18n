@@ -4,17 +4,18 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next\"",
-    "build": "node server/index.js & next build; kill $(lsof -i tcp:7777 | head -n 2 | tail -n 1 | awk '{print $2}')",
-    "start": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next start\""
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
+    "i18next-chained-backend": "^3.0.2",
     "i18next-http-backend": "^1.2.6",
+    "i18next-localstorage-backend": "^3.1.3",
     "next": "11.0.1",
     "ni18n": "link:../../"
   },
   "devDependencies": {
-    "concurrently": "^6.2.0",
     "eslint-config-next": "^11.0.1",
     "prettier": "^2.3.2"
   }

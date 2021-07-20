@@ -12,8 +12,8 @@ export const createI18nInstance = (
   init: ReturnType<I18NextClient['init']>
 } => {
   const config: InitOptions = {
-    ...getBackendConfig(options),
     ...options,
+    ...getBackendConfig(options),
     partialBundledLanguages: options.partialBundledLanguages ?? true,
     react: {
       ...options.react,
