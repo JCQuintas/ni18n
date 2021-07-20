@@ -6,10 +6,6 @@ it('should return the backend plugin config if not in browser and no custom back
 
   expect(result).toStrictEqual({
     backend: {
-      addPath: path.resolve(
-        process.cwd(),
-        './public/locales/{{lng}}/{{ns}}.missing.json',
-      ),
       loadPath: path.resolve(
         process.cwd(),
         './public/locales/{{lng}}/{{ns}}.json',
