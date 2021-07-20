@@ -23,7 +23,9 @@ export const createI18nInstance = (
 
   const instance = i18n.createInstance(config)
 
-  useBackend(instance.use(initReactI18next))
+  instance.use(initReactI18next)
+
+  useBackend(instance)
 
   if (Array.isArray(plugins)) {
     plugins.flat().forEach((plugin) => instance.use(plugin))
