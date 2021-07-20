@@ -13,36 +13,35 @@ type DirSchema = {
 
 const languages = Object.keys(translations)
 const namespaces = Object.keys(Object.values(translations)[0]) as Namespaces[]
-const namespacesNoClient = namespaces.filter((v) => v !== 'client')
 
 const schemas: DirSchema[] = [
   {
     example: 'custom-backend',
     schema: 'server/locales/{{lng}}/{{ns}}.json',
-    namespaces: namespacesNoClient,
+    namespaces,
   },
   {
     example: 'custom-language-selection',
     schema: 'public/locales/{{lng}}/{{ns}}.json',
-    namespaces: namespacesNoClient,
+    namespaces,
   },
   {
     example: 'custom-location',
     schema: 'public/custom/{{lng}}.{{ns}}.json',
-    namespaces: namespacesNoClient,
+    namespaces,
   },
   {
     example: 'simple',
     schema: 'public/locales/{{lng}}/{{ns}}.json',
-    namespaces: namespacesNoClient,
+    namespaces,
   },
   {
     example: 'typescript',
     schema: 'public/locales/{{lng}}/{{ns}}.json',
-    namespaces: namespacesNoClient,
+    namespaces,
   },
   {
-    example: 'client-http-translations',
+    example: 'cached-translations',
     schema: 'server/locales/{{lng}}/{{ns}}.json',
     namespaces,
   },

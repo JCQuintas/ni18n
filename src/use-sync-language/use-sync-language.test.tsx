@@ -7,13 +7,18 @@ import { renderHook } from '@testing-library/react-hooks'
 import { useSyncLanguage } from './use-sync-language'
 import '@testing-library/jest-dom/extend-expect'
 
+/**
+ * Needs to mock out the backend as HTTP backend throws
+ * when resource doesn't exist
+ */
+jest.mock('../use-backend')
+
 const Rendered = ({ children }: PropsWithChildren<unknown>) => {
   return <>{children}</>
 }
 
 const App = appWithI18Next(Rendered, {
   supportedLngs: ['en', 'es', 'pt'],
-  lng: 'en',
 })
 
 const wrapper = ({ children }: PropsWithChildren<unknown>) => (
@@ -21,7 +26,7 @@ const wrapper = ({ children }: PropsWithChildren<unknown>) => (
 )
 
 it('should properly change the i18n selected language when receiving new input', async () => {
-  const initialProps: { language?: string } = { language: 'en' }
+  const initialProps: { language?: string } = { language: undefined }
 
   const { rerender, result, waitForNextUpdate } = renderHook(
     ({ language }) => useSyncLanguage(language),
@@ -32,6 +37,8 @@ it('should properly change the i18n selected language when receiving new input',
   )
 
   await waitForNextUpdate()
+
+  rerender({ language: 'en' })
 
   expect(result.current.i18n.language).toBe('en')
 

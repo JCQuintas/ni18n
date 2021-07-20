@@ -3,14 +3,14 @@ import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
 
 const ClientTranslationsPage = () => {
-  const { t, ready } = useTranslation('client')
+  const { t } = useTranslation('client')
 
   return (
     <>
       <Header />
       <main>
-        <h1>{ready ? t('title') : ''}</h1>
-        <p>{ready ? t('content') : ''}</p>
+        <h1>{t('title')}</h1>
+        <p>{t('content')}</p>
       </main>
       <Footer />
     </>

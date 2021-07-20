@@ -18,7 +18,7 @@ const AlternatePage = () => {
   )
 }
 
-export const getStaticProps = async (props) => {
+export const getServerSideProps = async (props) => {
   return {
     props: {
       ...(await loadTranslations(ni18nConfig, props.locale, [

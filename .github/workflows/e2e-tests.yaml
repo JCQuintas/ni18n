@@ -14,7 +14,7 @@ jobs:
       matrix:
         example:
           [
-            client-http-translations,
+            cached-translations,
             custom-backend,
             custom-language-selection,
             custom-location,

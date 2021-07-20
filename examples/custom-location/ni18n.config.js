@@ -1,11 +1,11 @@
-const localePath = './public/custom/{{lng}}.{{ns}}'
+const localePath = '/custom/{{lng}}.{{ns}}.json'
 
 export const ni18nConfig = {
   fallbackLng: 'en',
   supportedLngs: ['en', 'es', 'pt'],
-  ns: ['alternate', 'home', 'translation'],
+  ns: ['alternate', 'home', 'translation', 'client'],
   backend: {
-    addPath: `${localePath}.missing.json`,
-    loadPath: `${localePath}.json`,
+    loadPath:
+      typeof window === 'undefined' ? `./public/${localePath}` : localePath,
   },
 }
