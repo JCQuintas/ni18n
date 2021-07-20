@@ -1,6 +1,6 @@
 # Ni18n
 
-Is an easy to use integration for [Next.js](https://nextjs.org/) to enable [i18next](https://www.i18next.com/) translations on your application with support for SSR and SSG.
+Is an easy to use integration for [Next.js](https://nextjs.org/) to enable [i18next](https://www.i18next.com/) translations on your application with support for SSR, SSG and Client translation loading.
 
 <img src="./.github/assets/logo.svg" />
 
@@ -10,7 +10,7 @@ It gives you freedom to use `i18next` with a lot of different customizations, wh
 
 - [Installing](#installing)
 - [Usage](#usage)
-- [Examples](#Examples)
+- [Examples](#examples)
 - [F.A.Q.](#faq)
 
 ## Installing
@@ -77,6 +77,8 @@ export default appWithI18Next(MyApp, ni18nConfig)
 ### 4. Use `loadTranslations` in your page
 
 To provide translations to your pages during Static Generation (SSG) or Server Side Rendering (SSR) you will need to use the `loadTranslations` function provided by `ni18n` in either your `getStaticProps` or `getServerSideProps`.
+
+> Note: skip this step if you want to load your translations on the client only.
 
 ```tsx
 // pages/index.ts
@@ -161,4 +163,8 @@ You can check the [custom-backend](examples/custom-backend/ni18n.config.js) exam
 
 ### Loading translations on client side using HTTP/Other
 
-Support for client loaded translations is baked in and should not require many changes from your side. As show in the [cached-translations](examples/cached-translations/ni18n.config.js), simply add a backend plugin, and set the options `partialBundledLanguages` and `react.useSuspense`. Then you can have a page that doesn't have `getStaticProps` nor `getServerSideProps`.
+Support for client loaded translations is baked in and should not require many changes from your side.
+
+### Caching translations on the frontend
+
+As show in the [cached-translations](examples/cached-translations/ni18n.config.js), you can use the Chained backend to create a cache layer that will be used in case files were previously downloaded on a specific client.
