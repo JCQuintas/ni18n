@@ -7,13 +7,14 @@ import { renderHook } from '@testing-library/react-hooks'
 import { useSyncLanguage } from './use-sync-language'
 import '@testing-library/jest-dom/extend-expect'
 
+jest.mock('../use-backend')
+
 const Rendered = ({ children }: PropsWithChildren<unknown>) => {
   return <>{children}</>
 }
 
 const App = appWithI18Next(Rendered, {
   supportedLngs: ['en', 'es', 'pt'],
-  lng: 'en',
 })
 
 const wrapper = ({ children }: PropsWithChildren<unknown>) => (
