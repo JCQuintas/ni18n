@@ -4,8 +4,7 @@ import React, { useMemo } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
-import type { Ni18nOptions } from '../ni18n-options'
-import type { Ni18nState } from '../load-translations'
+import type { Ni18nOptions, Ni18nState } from '../common'
 
 /**
  * Use `appWithI18Next` inside your `_app.jsx` file to initialize the `I18nextProvider`.
