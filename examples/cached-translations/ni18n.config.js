@@ -5,7 +5,6 @@ import LocalStorageBackend from 'i18next-localstorage-backend'
 const isBrowser = typeof window !== 'undefined'
 
 export const ni18nConfig = {
-  fallbackLng: 'en',
   supportedLngs: ['en', 'es', 'pt'],
   ns: ['alternate', 'home', 'translation', 'client'],
   use: isBrowser ? [ChainedBackend] : undefined,
