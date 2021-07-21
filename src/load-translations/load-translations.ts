@@ -54,9 +54,10 @@ export const loadTranslations = async (
 
   const locales = Array.from(
     new Set(
-      [initialLocale, ...getFallbackLocales(i18nextOptions)].filter(
-        Boolean,
-      ) as string[],
+      [
+        initialLocale,
+        ...getFallbackLocales(i18nextOptions, initialLocale),
+      ].filter(Boolean) as string[],
     ),
   )
 
