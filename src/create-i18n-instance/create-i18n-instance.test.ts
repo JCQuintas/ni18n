@@ -39,7 +39,7 @@ test.each([
   [false, true, false, true],
   [undefined, undefined, true, false],
 ])(
-  'should respect user settings if they are set or use defaults if not',
+  'should respect user settings if they are set or use defaults if not %#',
   async (inputBundle, inputSuspense, outputBundle, outputSuspense) => {
     const use = jest.fn()
     const init = jest.fn()

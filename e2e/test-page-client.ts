@@ -13,23 +13,15 @@ export const testPageClient = async (
   const namespace = 'client'
   const data = translations[language][namespace]
 
-  const hasClientPage = await page.isVisible(
-    `[data-id=${pageName}-page-button]`,
-  )
+  await page.click(`[data-id=${pageName}-page-button]`)
+  await page.waitForTimeout(waitTime)
 
-  if (hasClientPage) {
-    await page.click(`[data-id=${pageName}-page-button]`)
-    await page.waitForTimeout(waitTime)
+  await page.click(`[data-id=${language}-button]`)
+  await page.waitForTimeout(waitTime)
 
-    await page.click(`[data-id=${language}-button]`)
-    await page.waitForTimeout(waitTime)
+  expect(await page.innerText('main h1')).toBe(data.title)
+  expect(await page.innerText('main p')).toBe(data.content)
 
-    expect(await page.innerText('main h1')).toBe(data.title)
-    expect(await page.innerText('main p')).toBe(data.content)
-
-    await testHeader(page, language)
-    await testFooter(page, language, pageName)
-  } else {
-    expect(hasClientPage).toBe(false)
-  }
+  await testHeader(page, language)
+  await testFooter(page, language, pageName)
 }
