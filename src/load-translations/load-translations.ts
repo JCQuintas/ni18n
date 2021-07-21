@@ -1,18 +1,7 @@
-import type { Resource } from 'i18next'
-import type { Namespace } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
-import type { Ni18nOptions } from '../ni18n-options'
+import type { NamespacesNeeded, Ni18nOptions, Ni18nState } from '../common'
 import { getFallbackLocales } from './get-fallback-locales'
-import { getNamespaces } from './get-namespaces'
-
-export type Ni18nState = {
-  __ni18n__: {
-    resources: Resource
-  }
-}
-
-// For some reason if we don't reassign `Namespace` it gets compiled into `Namespace<string>`
-type NamespacesNeeded = Namespace
+import { getNamespaces } from '../common'
 
 /**
  * Use `loadTranslations` inside the `getStaticProps` or `getServerSideProps`.
