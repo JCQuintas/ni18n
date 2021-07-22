@@ -8,8 +8,13 @@ import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from '../common'
 
 /**
- * Use `loadTranslations` inside the `getStaticProps` or `getServerSideProps`.
- * It will make the translations available for the client through the `props`.
+ * Use `loadTranslations` inside `getStaticProps` or `getServerSideProps`
+ * to make the translations available for the client through the `pageProps`.
+ *
+ * Any namespace not loaded by this function will not be available to be
+ * loaded on the client side, you can use `clientNamespaces` in conjunction
+ * with this one to make them available. Any overlapping namespaces will be
+ * loaded on the server instead.
  *
  * ```js
  * export const getStaticProps = async (props) => ({
