@@ -15,11 +15,25 @@ it('should throw an error if using without options', () => {
 
 const Rendered = () => <>Rendered</>
 
-it('should properly render a component', () => {
-  const App = appWithI18Next(Rendered, {})
-  render(<App router={{}} />)
+test.each([
+  [{}, {}],
+  [{ __ni18n_server__: {} }, {}],
+  [{}, { __ni18n_client__: {} }],
+  [{ __ni18n_server__: {} }, { __ni18n_client__: {} }],
+  [{ __ni18n_server__: { ns: ['ns1', 'ns2'] } }, {}],
+  [{}, { __ni18n_client__: { ns: ['ns3', 'ns4'] } }],
+  [
+    { __ni18n_server__: { ns: ['ns1', 'ns2'] } },
+    { __ni18n_client__: { ns: ['ns3', 'ns4'] } },
+  ],
+])(
+  'should properly render a component regardless of ni18n property %#',
+  (server, client) => {
+    const App = appWithI18Next(Rendered, {})
+    render(<App router={{}} pageProps={{ ...server, ...client }} />)
 
-  const element = screen.getByText('Rendered')
+    const element = screen.getByText('Rendered')
 
-  expect(element).toBeInTheDocument()
-})
+    expect(element).toBeInTheDocument()
+  },
+)
