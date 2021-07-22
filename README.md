@@ -124,7 +124,7 @@ export const MyComponent = () => {
 }
 ```
 
-> Note: `ni18n` only exports `appWithI18Next`, `loadTranslations` and `useSyncLanguage`. All other functions you need can be imported from `react-i18next`.
+> Note: `ni18n` only exports `appWithI18Next`, `loadTranslations`, `clientNamespaces` and `useSyncLanguage`. All other functions you need can be imported from `react-i18next`.
 
 ## Examples
 

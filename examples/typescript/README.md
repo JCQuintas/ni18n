@@ -6,7 +6,7 @@
 
 To allow a type safe integration you can create a new declaration file as seen in [i18next.d.ts](./i18next.d.ts). Then make sure the file is loaded in your `tsconfig.json` under `include`.
 
-With that done, your `t`, `useTranslation`, `loadTranslations` and other i18next functions will be properly typed and have autocomplete enabled.
+With that done, your `t`, `useTranslation`, `loadTranslations` and `clientNamespaces` and other i18next functions will be properly typed and have autocomplete enabled.
 
 ## Notable files
 
