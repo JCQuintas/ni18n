@@ -1,5 +1,9 @@
 import { createI18nInstance } from '../create-i18n-instance'
-import type { NamespacesNeeded, Ni18nOptions, Ni18nState } from '../common'
+import type {
+  NamespacesNeeded,
+  Ni18nOptions,
+  Ni18nServerState,
+} from '../common'
 import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from '../common'
 
@@ -18,13 +22,13 @@ import { getNamespaces } from '../common'
  * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options) plus the `use` property for plugins
  * @param initialLocale The initial locale for this page
  * @param namespacesNeeded The namespaces that are needed for all the elements in this page
- * @returns an object with a `__ni18n__` property to be used internally
+ * @returns an object with a `__ni18n_server__` property to be used internally
  */
 export const loadTranslations = async (
   options: Ni18nOptions,
   initialLocale?: string,
   namespacesNeeded?: NamespacesNeeded,
-): Promise<Ni18nState> => {
+): Promise<Ni18nServerState> => {
   if (!options) {
     throw new Error('No `options` passed to loadTranslations')
   }
@@ -65,8 +69,9 @@ export const loadTranslations = async (
   )
 
   return {
-    __ni18n__: {
+    __ni18n_server__: {
       resources: store,
+      ns: namespaces,
     },
   }
 }

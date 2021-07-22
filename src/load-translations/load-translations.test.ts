@@ -30,10 +30,12 @@ it('should return correct values when both parameters are strings', async () => 
   const result = await loadTranslations({}, 'test', 'ns1')
 
   expect(result).toStrictEqual({
-    __ni18n__: {
+    __ni18n_server__: {
+      ns: ['ns1', 'translation'],
       resources: {
         test: {
           ns1: { a: 'a' },
+          translation: {},
         },
       },
     },
@@ -44,11 +46,13 @@ it('should return correct values when namespace is an array', async () => {
   const result = await loadTranslations({}, 'language', ['ns1', 'ns2'])
 
   expect(result).toStrictEqual({
-    __ni18n__: {
+    __ni18n_server__: {
+      ns: ['ns1', 'ns2', 'translation'],
       resources: {
         language: {
           ns1: { a: '1' },
           ns2: { b: '2' },
+          translation: {},
         },
       },
     },
@@ -63,10 +67,11 @@ it('should return correct values when there is no initialLocale but options.fall
   )
 
   expect(result).toStrictEqual({
-    __ni18n__: {
+    __ni18n_server__: {
+      ns: ['ns1', 'translation'],
       resources: {
-        test: { ns1: { a: 'a' } },
-        language: { ns1: { a: '1' } },
+        test: { ns1: { a: 'a' }, translation: {} },
+        language: { ns1: { a: '1' }, translation: {} },
       },
     },
   })
@@ -88,10 +93,11 @@ it('should return an empty resource object if there is no data', async () => {
   )
 
   expect(result).toStrictEqual({
-    __ni18n__: {
+    __ni18n_server__: {
+      ns: ['ns1', 'translation'],
       resources: {
-        test: { ns1: {} },
-        language: { ns1: {} },
+        test: { ns1: {}, translation: {} },
+        language: { ns1: {}, translation: {} },
       },
     },
   })

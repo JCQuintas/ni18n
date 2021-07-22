@@ -4,7 +4,12 @@ import React, { useMemo } from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
-import type { Ni18nOptions, Ni18nState } from '../common'
+import type {
+  Ni18nClientState,
+  Ni18nOptions,
+  Ni18nServerState,
+} from '../common'
+import { uniqueArray } from '../common'
 
 /**
  * Use `appWithI18Next` inside your `_app.jsx` file to initialize the `I18nextProvider`.
@@ -27,19 +32,28 @@ export const appWithI18Next = (
   }
 
   const WithI18Next = (props: AppProps) => {
-    const { __ni18n__ } = (props.pageProps || {}) as Partial<Ni18nState>
+    const { __ni18n_server__, __ni18n_client__ } = (props.pageProps ||
+      {}) as Partial<Ni18nServerState & Ni18nClientState>
     const { locale } = props.router
 
     const i18nInstance = useMemo(() => {
       const { use: plugins, ...i18nextOptions } = options
 
+      const ns =
+        __ni18n_server__ || __ni18n_client__
+          ? uniqueArray([
+              ...(__ni18n_server__?.ns || []),
+              ...(__ni18n_client__?.ns || []),
+            ])
+          : i18nextOptions.ns
+
       const { instance } = createI18nInstance(
-        { ...i18nextOptions, lng: locale, ...__ni18n__ },
+        { ...i18nextOptions, lng: locale, ...__ni18n_server__, ns },
         plugins,
       )
 
       return instance
-    }, [options, __ni18n__, locale])
+    }, [options, __ni18n_server__, locale])
 
     return (
       <I18nextProvider i18n={i18nInstance}>

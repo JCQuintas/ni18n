@@ -1,9 +1,9 @@
 import { getNamespaces } from './get-namespaces'
 
-it('should return namespacesNeeded when it is an array with values', () => {
+it('should return namespacesNeeded plus defaultNS when it is an array with values', () => {
   const result = getNamespaces({ defaultNS: 'defaultNS' }, ['ns1', 'ns2'])
 
-  expect(result).toStrictEqual(['ns1', 'ns2'])
+  expect(result).toStrictEqual(['ns1', 'ns2', 'defaultNS'])
 })
 
 it('should return namespacesNeeded when it is an array with no values', () => {
@@ -12,10 +12,10 @@ it('should return namespacesNeeded when it is an array with no values', () => {
   expect(result).toStrictEqual([])
 })
 
-it('should return namespacesNeeded when it is a string', () => {
+it('should return namespacesNeeded plus defaultNS when it is a string', () => {
   const result = getNamespaces({ defaultNS: 'defaultNS' }, 'ns1')
 
-  expect(result).toStrictEqual(['ns1'])
+  expect(result).toStrictEqual(['ns1', 'defaultNS'])
 })
 
 it('should return option.defaultNS when namespacesNeeded is not an array nor string', () => {
