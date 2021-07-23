@@ -3,9 +3,10 @@ import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
 import { loadTranslations } from 'ni18n'
 import { ni18nConfig } from '../ni18n.config'
+import { GetServerSideProps } from 'next'
 
-const AlternatePage = () => {
-  const { t } = useTranslation('alternate')
+const DefaultNamespacePage = () => {
+  const { t } = useTranslation()
 
   return (
     <>
@@ -19,15 +20,12 @@ const AlternatePage = () => {
   )
 }
 
-export const getServerSideProps = async (props) => {
+export const getServerSideProps: GetServerSideProps = async (props) => {
   return {
     props: {
-      ...(await loadTranslations(ni18nConfig, props.locale, [
-        'alternate',
-        'translation',
-      ])),
+      ...(await loadTranslations(ni18nConfig, props.locale)),
     },
   }
 }
 
-export default AlternatePage
+export default DefaultNamespacePage

@@ -6,6 +6,7 @@ import { ni18nConfig } from '../ni18n.config'
 
 const AlternatePage = () => {
   const { t } = useTranslation('alternate')
+
   return (
     <>
       <Header />

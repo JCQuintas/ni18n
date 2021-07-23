@@ -42,7 +42,7 @@ const schemas: DirSchema[] = [
   },
   {
     example: 'cached-translations',
-    schema: 'server/locales/{{lng}}/{{ns}}.json',
+    schema: 'public/locales/{{lng}}/{{ns}}.json',
     namespaces,
   },
 ]

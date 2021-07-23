@@ -16,7 +16,7 @@
     "downlevelIteration": true
   },
   "include": ["src/**/*", "e2e/**/*", "scripts/**/*", "data/**/*"],
-  "exclude": ["examples/**/*"],
+  "exclude": ["examples/**/*", "data/example-template/**/*"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
