@@ -21,7 +21,8 @@
     "test:e2e": "npx playwright test",
     "test:e2e:example": "ts-node ./scripts/e2e-test-docker",
     "release": "npx np",
-    "write:translations": "ts-node ./scripts/write-translations.ts"
+    "sync:translations": "ts-node ./scripts/sync-translations.ts",
+    "sync:examples": "ts-node ./scripts/sync-examples"
   },
   "author": "Jose Quintas <juniorquintas@gmail.com>",
   "license": "MIT",
@@ -40,6 +41,8 @@
     "i18next-http-backend": "^1.2.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-typescript": "^7.14.5",
     "@oclif/command": "^1.8.0",
     "@playwright/test": "^1.13.0",
     "@testing-library/jest-dom": "^5.14.1",
@@ -55,6 +58,7 @@
     "@typescript-eslint/parser": "^4.28.4",
     "chalk": "^4.1.1",
     "copyfiles": "^2.4.1",
+    "deepmerge": "^4.2.2",
     "enquirer": "^2.3.6",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
