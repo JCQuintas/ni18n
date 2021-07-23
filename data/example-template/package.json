@@ -1,0 +1,19 @@
+{
+  "name": "typescript-example-ni18n",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "11.0.1",
+    "ni18n": "link:../../"
+  },
+  "devDependencies": {
+    "eslint-config-next": "^11.0.1",
+    "prettier": "^2.3.2"
+  }
+}
