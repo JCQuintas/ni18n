@@ -2,7 +2,7 @@
 
 All the namespaces are always loaded on the client side if no [loadTranslations](./server-side-loading.md) or `clientNamespaces` are called on a page's server callback. In order to prevent that, you can use `clientNamespaces` to only allow the client to load the specific namespaces given to the function.
 
-```tsx
+```typescript
 // pages/index.ts
 
 export const getStaticProps = async (props) => {
@@ -16,7 +16,7 @@ export const getStaticProps = async (props) => {
 
 You can use both [loadTranslations](./server-side-loading.md) or `clientNamespaces` in the same page if necessary.
 
-```tsx
+```typescript
 // pages/index.ts
 
 export const getStaticProps = async (props) => {

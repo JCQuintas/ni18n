@@ -1,14 +1,14 @@
 # Installing
 
-```shell
+```bash
 yarn add i18next react-i18next ni18n
 ```
 
-```shell
+```bash
 npm install i18next react-i18next ni18n
 ```
 
-```ts
+```typescript
 import {
   appWithI18Next,
   loadTranslations,

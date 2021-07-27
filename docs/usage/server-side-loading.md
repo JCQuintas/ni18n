@@ -2,7 +2,7 @@
 
 To provide translations to your pages during Static Generation (SSG) or Server Side Rendering (SSR) you will need to use the `loadTranslations` function provided by `ni18n` in either your `getStaticProps` or `getServerSideProps`.
 
-```tsx
+```typescript
 // pages/index.ts
 
 // Can be used with `getServerSideProps` as well
@@ -21,7 +21,7 @@ This will render the pages with the translations in the `namespaces` provided, a
 
 Namespaces not provided will **not be loaded on the client** if `loadTranslations` is provided to a page. You can use both `loadTranslations` and [clientNamespaces](./client-side-loading.md) in the same page if it is necessary to load some translations only in the client.
 
-```tsx
+```typescript
 // pages/index.ts
 
 export const getStaticProps = async (props) => {

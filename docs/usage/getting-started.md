@@ -6,7 +6,7 @@ There are two configuration files that are necessary for `ni18n` to work as expe
 
 Setup the next config file according to your needs by following the documentation on [next.js i18n-routing](https://nextjs.org/docs/advanced-features/i18n-routing)
 
-```js
+```javascript
 // next.config.js
 module.exports = {
   i18n: {
@@ -22,7 +22,7 @@ The `ni18n` config works pretty much as an `i18next` config does. With a few min
 
 But the basic setup is pretty simple.
 
-```ts
+```typescript
 // ni18n.config.ts
 import type { Ni18nOptions } from 'ni18n'
 
@@ -55,7 +55,7 @@ Example of how your folder structure should look like.
 
 Translations won't work without a `I18nextProvider`, so we need to set it up. It is required to wrap your `App` with the `appWithI18Next` function provided by `ni18n`. Which will initialize the `i18next` instance and provide it as a context for all the children. You can read more about [Next.js Custom App](https://nextjs.org/docs/advanced-features/custom-app) in their documentation.
 
-```tsx
+```typescript
 // pages/_app.tsx
 import { appWithI18Next } from 'ni18n'
 import { ni18nConfig } from '../ni18n.config'
@@ -69,7 +69,7 @@ export default appWithI18Next(MyApp, ni18nConfig)
 
 Finally, you can call `useTranslation` on your files, or any other `react-i18next` component you may need.
 
-```tsx
+```jsx
 // my-component.tsx
 import { useTranslation } from 'react-i18next'
 

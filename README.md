@@ -15,15 +15,15 @@ It gives you freedom to use `i18next` with a lot of different customizations, wh
 
 ## Installing
 
-```shell
+```bash
 yarn add i18next react-i18next ni18n
 ```
 
-```shell
+```bash
 npm install i18next react-i18next ni18n
 ```
 
-```ts
+```typescript
 import {
   appWithI18Next,
   loadTranslations,
