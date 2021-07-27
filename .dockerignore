@@ -2,7 +2,9 @@
 coverage/
 dist/
 scripts/
+docs/
 **/node_modules/**
 **/.next/**
 Dockerfile.*
 src/**/*.test.*
+**/*.md
