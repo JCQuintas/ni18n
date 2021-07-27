@@ -9,5 +9,5 @@
 
 ## Extras
 
-- [List of Examples]('./docs/examples.md)
+- [List of Examples](./docs/examples.md)
 - [F.A.Q.](./docs/faq.md)
