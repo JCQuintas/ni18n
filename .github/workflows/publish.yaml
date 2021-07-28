@@ -30,16 +30,13 @@ jobs:
       - name: Build
         run: yarn build
 
-      # - name: Create Tag
-      #   run: yarn version --new-version ${{ github.event.inputs.version }}
+      - name: Create Tag
+        run: yarn version --new-version ${{ github.event.inputs.version }}
 
-      # - name: Push Tag
-      #   run: git push --follow-tags
-
-      - name: Pack
-        run: npm pack
+      - name: Push Tag
+        run: git push --follow-tags
 
       - name: Publish
-        run: npm publish --dry-run
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
