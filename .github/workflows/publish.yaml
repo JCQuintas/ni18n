@@ -24,10 +24,19 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Create Tags
-        run: yarn release ${{ github.event.inputs.version }} --no-2fa --no-tests --no-release-draft --no-publish
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+      # - name: Create Tag
+      #   run: yarn version --new-version ${{ github.event.inputs.version }}
+
+      # - name: Push Tag
+      #   run: git push --follow-tags
 
       - name: Publish
-        run: npm publish
+        run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
