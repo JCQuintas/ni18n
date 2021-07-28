@@ -36,6 +36,9 @@ jobs:
       # - name: Push Tag
       #   run: git push --follow-tags
 
+      - name: Pack
+        run: npm pack
+
       - name: Publish
         run: npm publish --dry-run
         env:
