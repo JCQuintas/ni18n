@@ -21,7 +21,9 @@ export const Footer = () => {
         <a>
           <button
             data-id="alternate-page-button"
-            className={router.pathname === '/alternate' ? 'active' : undefined}
+            className={
+              router.pathname === '/alternate-page' ? 'active' : undefined
+            }
           >
             {t('alternatePage')}
           </button>
@@ -43,7 +45,9 @@ export const Footer = () => {
         <a>
           <button
             data-id="client-page-button"
-            className={router.pathname === '/client' ? 'active' : undefined}
+            className={
+              router.pathname === '/client-page' ? 'active' : undefined
+            }
           >
             {t('clientPage')}
           </button>
