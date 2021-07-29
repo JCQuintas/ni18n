@@ -17,7 +17,7 @@ export const Footer = () => {
           </button>
         </a>
       </Link>
-      <Link href="/alternate" passHref>
+      <Link href="/alternate-page" passHref>
         <a>
           <button
             data-id="alternate-page-button"
@@ -39,7 +39,7 @@ export const Footer = () => {
           </button>
         </a>
       </Link>
-      <Link href="/client" passHref>
+      <Link href="/client-page" passHref>
         <a>
           <button
             data-id="client-page-button"
