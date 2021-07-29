@@ -44,4 +44,6 @@ jobs:
         run: cd examples/${{ matrix.example }} && yarn start &
 
       - name: Run E2E for ${{ matrix.example }}
+        env:
+          EXAMPLE_FOLDER: ${{ matrix.example }}
         run: yarn test:e2e
