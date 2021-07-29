@@ -1,6 +1,17 @@
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import { TFuncKey, useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+
+type Language = {
+  code: string
+  translateKey: TFuncKey<'translation'>
+}
+
+const languages: Language[] = [
+  { code: 'en', translateKey: 'english' },
+  { code: 'pt', translateKey: 'portuguese' },
+  { code: 'es', translateKey: 'spanish' },
+]
 
 export const Header = () => {
   const { t } = useTranslation()
@@ -22,36 +33,25 @@ export const Header = () => {
         </svg>
       </div>
       <div>
-        <Link href={router.pathname} locale={'en'} passHref>
-          <a>
-            <button
-              data-id="en-button"
-              className={router.locale === 'en' ? 'active' : undefined}
-            >
-              {t('english')}
-            </button>
-          </a>
-        </Link>
-        <Link href={router.pathname} locale={'pt'} passHref>
-          <a>
-            <button
-              data-id="pt-button"
-              className={router.locale === 'pt' ? 'active' : undefined}
-            >
-              {t('portuguese')}
-            </button>
-          </a>
-        </Link>
-        <Link href={router.pathname} locale={'es'} passHref>
-          <a>
-            <button
-              data-id="es-button"
-              className={router.locale === 'es' ? 'active' : undefined}
-            >
-              {t('spanish')}
-            </button>
-          </a>
-        </Link>
+        {languages.map((language) => (
+          <Link
+            href={router.pathname}
+            locale={language.code}
+            passHref
+            key={language.code}
+          >
+            <a>
+              <button
+                data-id={`${language.code}-button`}
+                className={
+                  router.locale === language.code ? 'active' : undefined
+                }
+              >
+                {t(language.translateKey)}
+              </button>
+            </a>
+          </Link>
+        ))}
       </div>
     </header>
   )
