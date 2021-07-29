@@ -34,9 +34,14 @@ export const loadFiles = async (
 ): Promise<FileSchema> => {
   const filename = path.basename(fullPath)
   const filenameNoExt = filename.split('.').slice(0, -1).join('.')
-  const fileContent = await promisify(fs.readFile)(fullPath, {
-    encoding: 'utf-8',
-  })
+
+  const fileExists = await promisify(fs.exists)(fullPath)
+
+  const fileContent = fileExists
+    ? await promisify(fs.readFile)(fullPath, {
+        encoding: 'utf-8',
+      })
+    : ''
 
   const isJavascript = ['.js', '.jsx'].includes(path.extname(filename))
   const isTypescript = ['.ts', '.tsx'].includes(path.extname(filename))
@@ -46,7 +51,7 @@ export const loadFiles = async (
     relativePath,
   }
 
-  if (isTypescript || isJavascript) {
+  if (fileExists && (isTypescript || isJavascript)) {
     const typescript = isTypescript ? fileContent : undefined
     const javascript = isJavascript
       ? fileContent
