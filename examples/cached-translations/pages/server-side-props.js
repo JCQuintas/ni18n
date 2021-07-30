@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { loadTranslations } from 'ni18n'
 import { ni18nConfig } from '../ni18n.config'
 
-const AlternatePage = () => {
+const ServerSidePropsPage = () => {
   const { t } = useTranslation('alternate')
 
   return (
@@ -30,4 +30,4 @@ export const getServerSideProps = async (props) => {
   }
 }
 
-export default AlternatePage
+export default ServerSidePropsPage
