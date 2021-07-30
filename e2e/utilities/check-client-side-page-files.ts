@@ -20,7 +20,7 @@ export const checkClientSidePageFiles = async (
   )
 
   const filterNamespaces = (pattern: Pattern) =>
-    allowedNamespaces &&
+    !allowedNamespaces ||
     allowedNamespaces.some((namespace) =>
       pattern.toString().includes(namespace),
     )
