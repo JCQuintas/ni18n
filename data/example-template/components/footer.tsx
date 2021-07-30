@@ -1,58 +1,58 @@
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import { TFuncKey, useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+
+type Page = {
+  path: string
+  name: string
+  translateKey: TFuncKey<'translation'>
+}
+
+const pages: Page[] = [
+  {
+    path: '/',
+    name: 'home',
+    translateKey: 'homePage',
+  },
+  {
+    path: '/server-side-props',
+    name: 'server-side-props',
+    translateKey: 'serverSidePropsPage',
+  },
+  {
+    path: '/default-namespace',
+    name: 'default-namespace',
+    translateKey: 'defaultNamespacePage',
+  },
+  {
+    path: '/client-loading',
+    name: 'client-loading',
+    translateKey: 'clientLoadingPage',
+  },
+  {
+    path: '/client-namespaces',
+    name: 'client-namespaces',
+    translateKey: 'clientNamespacesPage',
+  },
+]
 
 export const Footer = () => {
   const { t } = useTranslation()
   const router = useRouter()
   return (
     <footer>
-      <Link href="/" passHref>
-        <a>
-          <button
-            data-id="home-page-button"
-            className={router.pathname === '/' ? 'active' : undefined}
-          >
-            {t('homePage')}
-          </button>
-        </a>
-      </Link>
-      <Link href="/alternate-page" passHref>
-        <a>
-          <button
-            data-id="alternate-page-button"
-            className={
-              router.pathname === '/alternate-page' ? 'active' : undefined
-            }
-          >
-            {t('alternatePage')}
-          </button>
-        </a>
-      </Link>
-      <Link href="/default-namespace" passHref>
-        <a>
-          <button
-            data-id="default-namespace-page-button"
-            className={
-              router.pathname === '/default-namespace' ? 'active' : undefined
-            }
-          >
-            {t('defaultNamespacePage')}
-          </button>
-        </a>
-      </Link>
-      <Link href="/client-page" passHref>
-        <a>
-          <button
-            data-id="client-page-button"
-            className={
-              router.pathname === '/client-page' ? 'active' : undefined
-            }
-          >
-            {t('clientPage')}
-          </button>
-        </a>
-      </Link>
+      {pages.map((page) => (
+        <Link href={page.path} passHref key={page.path}>
+          <a>
+            <button
+              data-id={`${page.name}-page-button`}
+              className={router.pathname === page.path ? 'active' : undefined}
+            >
+              {t(page.translateKey)}
+            </button>
+          </a>
+        </Link>
+      ))}
     </footer>
   )
 }

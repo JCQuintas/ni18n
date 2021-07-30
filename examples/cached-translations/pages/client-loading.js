@@ -2,7 +2,7 @@ import { Header } from '../components/header'
 import { Footer } from '../components/footer'
 import { useTranslation } from 'react-i18next'
 
-const ClientTranslationsPage = () => {
+const ClientLoadingPage = () => {
   const { t } = useTranslation('client')
 
   return (
@@ -17,4 +17,4 @@ const ClientTranslationsPage = () => {
   )
 }
 
-export default ClientTranslationsPage
+export default ClientLoadingPage

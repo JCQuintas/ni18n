@@ -3,9 +3,10 @@
   "portuguese": "portugués",
   "spanish": "español",
   "homePage": "Página Inicial",
-  "alternatePage": "Página Alternativa",
-  "defaultNamespacePage": "Página de Namespace Predeterminado",
-  "clientPage": "Página con Traducciones en Cliente",
+  "serverSidePropsPage": "Traduciones en el Servidor",
+  "defaultNamespacePage": "Página con Namespace Predeterminado",
+  "clientLoadingPage": "Traduciones en el Cliente",
+  "clientNamespacesPage": "Utilizando clientNamespaces",
   "title": "Utilizando el Namespace Predeterminado",
   "content": "Esta página solo usa el namespace predeterminado y no necesita solicitarlo."
 }

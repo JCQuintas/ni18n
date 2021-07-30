@@ -1,15 +1,13 @@
 import { test } from '@playwright/test'
+import { checkClientSidePageFiles } from './utilities/check-client-side-page-files'
 import { Namespace } from './utilities/namespace'
 import { PageName } from './utilities/page-name'
-import {
-  forbidAllClientSideTranslations,
-  setupRequestVerifier,
-} from './utilities/request-verifier'
+import { setupRequestVerifier } from './utilities/request-verifier'
 import { setupPageAndLanguage } from './utilities/setup-page-and-language'
 import { testPage } from './utilities/test-page'
 
-const PAGE_NAME: PageName = 'default-namespace'
-const NAMESPACE: Namespace = 'translation'
+const PAGE_NAME: PageName = 'client-loading'
+const NAMESPACE: Namespace = 'client'
 
 test('translations work for language "en"', async ({ page }) => {
   const language = 'en'
@@ -20,7 +18,7 @@ test('translations work for language "en"', async ({ page }) => {
 
   await testPage(page, language, PAGE_NAME, NAMESPACE)
 
-  await forbidAllClientSideTranslations(allRequests)
+  await checkClientSidePageFiles(allRequests, language)
 })
 
 test('translations work for language "es"', async ({ page }) => {
@@ -32,7 +30,7 @@ test('translations work for language "es"', async ({ page }) => {
 
   await testPage(page, language, PAGE_NAME, NAMESPACE)
 
-  await forbidAllClientSideTranslations(allRequests)
+  await checkClientSidePageFiles(allRequests, language)
 })
 
 test('translations work for language "pt"', async ({ page }) => {
@@ -44,5 +42,5 @@ test('translations work for language "pt"', async ({ page }) => {
 
   await testPage(page, language, PAGE_NAME, NAMESPACE)
 
-  await forbidAllClientSideTranslations(allRequests)
+  await checkClientSidePageFiles(allRequests, language)
 })

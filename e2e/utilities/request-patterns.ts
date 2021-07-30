@@ -1,3 +1,5 @@
+export type Pattern = string | RegExp
+
 const createFilePattern = (language: string, namespace: string) =>
   new RegExp(`${language}[/.]${namespace}(.json)?$`)
 

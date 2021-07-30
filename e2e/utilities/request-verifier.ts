@@ -1,7 +1,5 @@
 import { Page } from '@playwright/test'
-import { requestPatterns } from './request-patterns'
-
-type Patterns = (string | RegExp)[]
+import { Pattern, requestPatterns } from './request-patterns'
 
 export const setupRequestVerifier = (
   page: Page,
@@ -16,7 +14,7 @@ export const setupRequestVerifier = (
 }
 
 const checkPatterns =
-  (patterns: Patterns) =>
+  (patterns: Pattern[]) =>
   (request: string): boolean =>
     patterns.some((pattern) =>
       pattern instanceof RegExp
@@ -26,7 +24,7 @@ const checkPatterns =
 
 export const checkForForbiddenRequests = async (
   requests: Set<string>,
-  patterns: Patterns,
+  patterns: Pattern[],
 ): Promise<void> => {
   const forbiddenRequests = Array.from(requests).filter(checkPatterns(patterns))
 
@@ -38,7 +36,7 @@ export const checkForForbiddenRequests = async (
 
 export const checkForRequiredRequests = async (
   requests: Set<string>,
-  patterns: Patterns,
+  patterns: Pattern[],
 ): Promise<void> => {
   const requiredRequests = patterns.filter(
     (pattern) =>
