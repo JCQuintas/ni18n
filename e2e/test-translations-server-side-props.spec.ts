@@ -8,8 +8,8 @@ import {
 import { setupPageAndLanguage } from './utilities/setup-page-and-language'
 import { testPage } from './utilities/test-page'
 
-const PAGE_NAME: PageName = 'default-namespace'
-const NAMESPACE: Namespace = 'translation'
+const PAGE_NAME: PageName = 'server-side-props'
+const NAMESPACE: Namespace = 'alternate'
 
 test('translations work for language "en"', async ({ page }) => {
   const language = 'en'
