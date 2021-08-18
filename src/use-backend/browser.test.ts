@@ -20,7 +20,8 @@ it('should not call the use function if there is a custom backend plugin', () =>
 it('should not call the use function if there is a custom backend plugin inside an array', () => {
   const use = jest.fn()
 
-  useBackend({ use } as unknown as i18n, [[{ type: 'backend' } as never]])
+  // @ts-expect-error it seems array typing is wrong
+  useBackend({ use } as unknown as i18n, [[{ type: 'backend' }]])
 
   expect(use).not.toHaveBeenCalled()
 })
