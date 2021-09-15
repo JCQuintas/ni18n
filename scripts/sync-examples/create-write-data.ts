@@ -39,6 +39,17 @@ export const createWriteData =
       const packageFile = merge(
         JSON.parse(data),
         JSON.parse(getDataFromSchema(example, fileSchema)),
+        {
+          customMerge: (key) => {
+            if (
+              ['peerDependencies', 'dependencies', 'devDependencies'].includes(
+                key,
+              )
+            ) {
+              return (a, b) => ({ ...b, ...a })
+            }
+          },
+        },
       )
       return {
         path: writePath,

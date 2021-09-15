@@ -9,11 +9,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "11.1.0",
+    "next": "11.1.2",
     "ni18n": "link:../../"
   },
   "devDependencies": {
-    "eslint-config-next": "^11.1.0",
-    "prettier": "^2.3.2"
+    "eslint-config-next": "^11.1.2",
+    "prettier": "^2.4.0"
   }
 }
