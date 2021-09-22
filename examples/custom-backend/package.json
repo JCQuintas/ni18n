@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "eslint-config-next": "^11.1.2",
-    "prettier": "^2.4.0",
+    "prettier": "^2.4.1",
     "concurrently": "^6.2.0"
   }
 }

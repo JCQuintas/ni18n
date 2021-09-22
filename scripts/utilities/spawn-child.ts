@@ -1,4 +1,4 @@
-import { spawn } from 'child_process'
+import { spawn, SpawnOptionsWithoutStdio } from 'child_process'
 
 const textToDisplay = ['.spec.ts:', ' passed (', 'debug']
 
@@ -6,8 +6,9 @@ export const spawnChild = async (
   command: string,
   args: string[],
   immediate?: boolean,
+  options?: SpawnOptionsWithoutStdio,
 ): Promise<string> => {
-  const dockerBuild = spawn(command, args)
+  const dockerBuild = spawn(command, args, options)
 
   let data = ''
   for await (const chunk of dockerBuild.stdout) {

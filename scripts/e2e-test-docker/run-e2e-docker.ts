@@ -1,6 +1,6 @@
 import { existsSync } from 'fs'
 import { join } from 'path'
-import { spawnChild } from './spawn-child'
+import { spawnChild } from '../utilities/spawn-child'
 
 type RunE2EDocker = {
   exampleFolder: string
