@@ -6,6 +6,7 @@ import { createWriteData } from './create-write-data'
 import { getFilesPaths } from './get-file-paths'
 import { loadExampleFiles } from './load-example-files'
 import { loadFiles } from './load-files'
+import { spawnChild } from '../utilities/spawn-child'
 
 const main = async () => {
   const exampleFilePaths = await getFilesPaths(exampleDataFolder)
@@ -28,8 +29,16 @@ const main = async () => {
     )
     .flat()
 
-  return Promise.all(
+  await Promise.all(
     writeData.map(({ path, data }) => promisify(fs.writeFile)(path, data)),
+  )
+
+  return Promise.all(
+    exampleSchemas.map((example) =>
+      spawnChild('yarn', [], false, {
+        cwd: path.join(examplesFolder, example.name),
+      }),
+    ),
   )
 }
 
