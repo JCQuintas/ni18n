@@ -28,9 +28,11 @@ import type { Ni18nOptions } from 'ni18n'
 
 export const ni18nConfig: Ni18nOptions = {
   supportedLngs: ['en', 'es'],
-  ns: ['your-namespaces'],
+  ns: ['your-default-namespace', 'your-other-namespaces...'],
 }
 ```
+
+> **i18next >= 21** The first item in the `ns` array will be set as your `default` and allow you to call `useTranslation()` without any parameters to use it. If you want to manually select the default, then you can set the `defaultNS` property.
 
 > Note: The `name` and `location` of the file don't really matter, you can call it anything and put it anywhere you want.
 
