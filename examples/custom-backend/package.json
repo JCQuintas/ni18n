@@ -9,7 +9,7 @@
     "start": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next start\""
   },
   "dependencies": {
-    "next": "12.0.3",
+    "next": "12.0.5",
     "ni18n": "link:../../",
     "i18next-http-backend": "^1.2.6"
   },
