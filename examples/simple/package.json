@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "12.0.3",
+    "next": "12.0.5",
     "ni18n": "link:../../"
   },
   "devDependencies": {
