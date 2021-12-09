@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "12.0.3",
+    "next": "12.0.5",
     "ni18n": "link:../../",
     "i18next-chained-backend": "^3.0.2",
     "i18next-http-backend": "^1.2.6",
