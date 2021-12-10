@@ -9,13 +9,13 @@
     "start": "concurrently -n B,F -c green,yellow \"node server/index.js\" \"next start\""
   },
   "dependencies": {
-    "next": "12.0.3",
+    "next": "12.0.7",
     "ni18n": "link:../../",
     "i18next-http-backend": "^1.2.6"
   },
   "devDependencies": {
-    "eslint-config-next": "^12.0.3",
-    "prettier": "^2.4.1",
+    "eslint-config-next": "^12.0.7",
+    "prettier": "^2.5.1",
     "concurrently": "^6.2.0"
   }
 }
