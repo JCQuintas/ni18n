@@ -11,7 +11,7 @@ updates:
       interval: 'daily'
 
   - package-ecosystem: 'npm'
-    directory: '/example-template'
+    directory: '/data/example-template'
     schedule:
       interval: 'daily'
     open-pull-requests-limit: 0
