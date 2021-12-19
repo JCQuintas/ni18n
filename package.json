@@ -1,6 +1,6 @@
 {
   "name": "ni18n",
-  "version": "1.0.2",
+  "version": "1.0.3-rc.0",
   "description": "Simple and powerful i18next integration for next.js",
   "repository": {
     "type": "git",
