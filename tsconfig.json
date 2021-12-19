@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "es2015",
+    "target": "es5",
     "outDir": "dist/esm",
     "declaration": true,
     "downlevelIteration": true
@@ -19,7 +19,8 @@
   "exclude": ["examples/**/*", "data/example-template/**/*"],
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "target": "esnext"
     }
   }
 }
