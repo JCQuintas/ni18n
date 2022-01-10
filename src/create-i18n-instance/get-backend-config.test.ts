@@ -6,7 +6,7 @@ it('should return the backend plugin config if not in browser and no custom back
 
   expect(result).toStrictEqual({
     backend: {
-      loadPath: path.resolve(
+      loadPath: path.join(
         process.cwd(),
         './public/locales/{{lng}}/{{ns}}.json',
       ),

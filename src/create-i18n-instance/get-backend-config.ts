@@ -14,7 +14,7 @@ export const getBackendConfig = (
 
     return {
       backend: {
-        loadPath: path.resolve(process.cwd(), `./public/${localePath}`),
+        loadPath: path.join(process.cwd(), `./public/${localePath}`),
       },
     }
   }
