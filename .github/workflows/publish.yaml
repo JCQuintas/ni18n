@@ -5,6 +5,7 @@ on:
     inputs:
       version:
         description: Release Type - patch | minor | major | 1.2.3
+        type: string
         default: patch
         required: true
 
@@ -31,12 +32,19 @@ jobs:
         run: yarn build
 
       - name: Create Tag
-        run: yarn version --new-version ${{ github.event.inputs.version }}
+        run: yarn version --new-version ${{ github.event.inputs.version }} --preid rc
 
       - name: Push Tag
         run: git push --follow-tags
 
-      - name: Publish
+      - name: Publish Beta
+        if: ${{ github.event.inputs.version !== 'prerelease' && github.event.inputs.version !== 'prepatch' && github.event.inputs.version !== 'preminor' && github.event.inputs.version !== 'premajor'}}
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Beta
+        if: ${{ github.event.inputs.version === 'prerelease' || github.event.inputs.version === 'prepatch' || github.event.inputs.version === 'preminor' || github.event.inputs.version === 'premajor'}}
+        run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
