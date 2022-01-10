@@ -1,11 +1,10 @@
 import { InitOptions } from 'i18next'
-import { isBrowser } from './is-browser'
+import { defaultPaths, isBrowser } from '../common'
 
 export const getBackendConfig = (
   options: InitOptions,
 ): Record<string, unknown> => {
   const hasCustomBackend = options.backend
-  const localePath = '/locales/{{lng}}/{{ns}}.json'
 
   // Server side backend config
   if (!isBrowser() && !hasCustomBackend) {
@@ -14,7 +13,12 @@ export const getBackendConfig = (
 
     return {
       backend: {
-        loadPath: path.join(process.cwd(), `./public/${localePath}`),
+        loadPath: path.join(
+          process.cwd(),
+          defaultPaths.public,
+          defaultPaths.locales,
+          defaultPaths.file,
+        ),
       },
     }
   }
@@ -22,7 +26,7 @@ export const getBackendConfig = (
   if (isBrowser() && !hasCustomBackend) {
     return {
       backend: {
-        loadPath: localePath,
+        loadPath: `${defaultPaths.locales}${defaultPaths.file}`,
       },
     }
   }

@@ -6,6 +6,7 @@ import type {
 } from '../common'
 import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from '../common'
+import { ensureFilesLoad } from './ensure-files-load'
 
 /**
  * Use `loadTranslations` inside `getStaticProps` or `getServerSideProps`
@@ -38,7 +39,9 @@ export const loadTranslations = async (
     throw new Error('No `options` passed to loadTranslations')
   }
 
-  const { use: plugins, ...i18nextOptions } = options
+  const { use: plugins, translationsFolder, ...i18nextOptions } = options
+
+  await ensureFilesLoad(translationsFolder)
 
   const { instance, init } = createI18nInstance(
     {
