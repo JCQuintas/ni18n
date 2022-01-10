@@ -38,13 +38,13 @@ jobs:
         run: git push --follow-tags
 
       - name: Publish Beta
-        if: ${{ github.event.inputs.version !== 'prerelease' && github.event.inputs.version !== 'prepatch' && github.event.inputs.version !== 'preminor' && github.event.inputs.version !== 'premajor'}}
+        if: ${{ github.event.inputs.version != 'prerelease' && github.event.inputs.version != 'prepatch' && github.event.inputs.version != 'preminor' && github.event.inputs.version != 'premajor'}}
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish Beta
-        if: ${{ github.event.inputs.version === 'prerelease' || github.event.inputs.version === 'prepatch' || github.event.inputs.version === 'preminor' || github.event.inputs.version === 'premajor'}}
+        if: ${{ github.event.inputs.version == 'prerelease' || github.event.inputs.version == 'prepatch' || github.event.inputs.version == 'preminor' || github.event.inputs.version == 'premajor'}}
         run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
