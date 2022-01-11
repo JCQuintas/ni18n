@@ -35,13 +35,13 @@ export const loadTranslations = async (
   initialLocale?: string,
   namespacesNeeded?: NamespacesNeeded,
 ): Promise<Ni18nServerState> => {
+  await ensureFilesLoad()
+
   if (!options) {
     throw new Error('No `options` passed to loadTranslations')
   }
 
   const { use: plugins, ...i18nextOptions } = options
-
-  await ensureFilesLoad()
 
   const { instance, init } = createI18nInstance(
     {

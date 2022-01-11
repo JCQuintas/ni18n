@@ -1,10 +1,9 @@
 import { InitOptions } from 'i18next'
-import {
-  defaultFilePath,
-  defaultLocalesPath,
-  defaultPublicPath,
-  isBrowser,
-} from '../common'
+import { isBrowser } from './is-browser'
+
+const publicPath = './public'
+const localesPath = '/locales'
+const filePath = '/{{lng}}/{{ns}}.json'
 
 export const getBackendConfig = (
   options: InitOptions,
@@ -18,12 +17,7 @@ export const getBackendConfig = (
 
     return {
       backend: {
-        loadPath: path.join(
-          process.cwd(),
-          defaultPublicPath,
-          defaultLocalesPath,
-          defaultFilePath,
-        ),
+        loadPath: path.join(process.cwd(), publicPath, localesPath, filePath),
       },
     }
   }
@@ -31,7 +25,7 @@ export const getBackendConfig = (
   if (isBrowser() && !hasCustomBackend) {
     return {
       backend: {
-        loadPath: `${defaultLocalesPath}${defaultFilePath}`,
+        loadPath: `${localesPath}${filePath}`,
       },
     }
   }
