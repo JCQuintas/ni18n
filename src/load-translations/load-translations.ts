@@ -39,9 +39,9 @@ export const loadTranslations = async (
     throw new Error('No `options` passed to loadTranslations')
   }
 
-  const { use: plugins, translationsFolder, ...i18nextOptions } = options
+  const { use: plugins, ...i18nextOptions } = options
 
-  await ensureFilesLoad(translationsFolder)
+  await ensureFilesLoad()
 
   const { instance, init } = createI18nInstance(
     {

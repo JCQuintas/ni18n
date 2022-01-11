@@ -1,20 +1,13 @@
-import { isBrowser, defaultPaths } from '../common'
-
-const decidePath = (translationsFolder?: string): string[] => {
-  if (translationsFolder) return [translationsFolder]
-  return [defaultPaths.public, defaultPaths.locales]
-}
+import { defaultLocalesPath, defaultPublicPath, isBrowser } from '../common'
 
 /**
  * We need this to force Vercel to move the files into the runner
  * https://github.com/vercel/next.js/issues/33133
  */
-export const ensureFilesLoad = async (translationsFolder?: string) => {
+export const ensureFilesLoad = async () => {
   if (isBrowser()) return
 
-  const pathToLoad = decidePath(translationsFolder)
+  const { join } = await import('path')
 
-  const path = await import('path')
-
-  path.join(process.cwd(), ...pathToLoad)
+  join(process.cwd(), defaultPublicPath, defaultLocalesPath)
 }
