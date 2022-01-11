@@ -5,4 +5,8 @@ export type { NamespacesNeeded } from './namespaces-needed'
 export { getNamespaces } from './get-namespaces'
 export { uniqueArray } from './unique-array'
 export { isBrowser } from './is-browser'
-export { defaultPaths } from './default-paths'
+export {
+  defaultFilePath,
+  defaultLocalesPath,
+  defaultPublicPath,
+} from './default-paths'

@@ -1,5 +1,10 @@
 import { InitOptions } from 'i18next'
-import { defaultPaths, isBrowser } from '../common'
+import {
+  defaultFilePath,
+  defaultLocalesPath,
+  defaultPublicPath,
+  isBrowser,
+} from '../common'
 
 export const getBackendConfig = (
   options: InitOptions,
@@ -15,9 +20,9 @@ export const getBackendConfig = (
       backend: {
         loadPath: path.join(
           process.cwd(),
-          defaultPaths.public,
-          defaultPaths.locales,
-          defaultPaths.file,
+          defaultPublicPath,
+          defaultLocalesPath,
+          defaultFilePath,
         ),
       },
     }
@@ -26,7 +31,7 @@ export const getBackendConfig = (
   if (isBrowser() && !hasCustomBackend) {
     return {
       backend: {
-        loadPath: `${defaultPaths.locales}${defaultPaths.file}`,
+        loadPath: `${defaultLocalesPath}${defaultFilePath}`,
       },
     }
   }

@@ -11,9 +11,7 @@ beforeAll(() => {
 })
 
 it('should return early and not call anything when in browser', async () => {
-  const translationFolder = '/test/folder'
-
-  await ensureFilesLoad(translationFolder)
+  await ensureFilesLoad()
 
   expect(joinMock).not.toHaveBeenCalled()
 })
