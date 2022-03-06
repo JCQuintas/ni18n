@@ -25,7 +25,7 @@ jobs:
         example: [typescript]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2.1.2
 
       - name: Get yarn cache directory path
