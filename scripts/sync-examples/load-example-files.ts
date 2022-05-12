@@ -2,11 +2,11 @@ import path from 'path'
 import { ExampleSchema } from './configs'
 import { FileSchema, loadFiles } from './load-files'
 
-type Return = Promise<{ fileSchemas: FileSchema[] } & ExampleSchema>
+type Return = { fileSchemas: FileSchema[] } & ExampleSchema
 
 export const loadExampleFiles =
   (exampleFilePaths: string[], examplesFolder: string) =>
-  async (example: ExampleSchema): Return => {
+  async (example: ExampleSchema): Promise<Return> => {
     const fileSchemas = await Promise.all(
       exampleFilePaths
         .filter((file) =>

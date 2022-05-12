@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app'
-import type { ElementType } from 'react'
+import type { ElementType, ReactNode } from 'react'
 import React, { useMemo } from 'react'
-import hoistNonReactStatics from 'hoist-non-react-statics'
 import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
 import type {
@@ -24,7 +23,7 @@ import { uniqueArray } from '../common'
  * @param options The options allowed by [i18next options](https://www.i18next.com/overview/configuration-options) plus the `use` property for plugins
  */
 export const appWithI18Next = (
-  WrappedComponent: ElementType<AppProps>,
+  WrappedComponent: ElementType<AppProps & { children?: ReactNode }>,
   options: Ni18nOptions,
 ): ElementType => {
   if (!options) {
@@ -62,5 +61,5 @@ export const appWithI18Next = (
     )
   }
 
-  return hoistNonReactStatics(WithI18Next, WrappedComponent)
+  return WithI18Next
 }

@@ -6,7 +6,6 @@ import type {
 } from '../common'
 import { getFallbackLocales } from './get-fallback-locales'
 import { getNamespaces } from '../common'
-import { ensureFilesLoad } from './ensure-files-load'
 
 /**
  * Use `loadTranslations` inside `getStaticProps` or `getServerSideProps`
@@ -35,8 +34,6 @@ export const loadTranslations = async (
   initialLocale?: string,
   namespacesNeeded?: NamespacesNeeded,
 ): Promise<Ni18nServerState> => {
-  await ensureFilesLoad()
-
   if (!options) {
     throw new Error('No `options` passed to loadTranslations')
   }
