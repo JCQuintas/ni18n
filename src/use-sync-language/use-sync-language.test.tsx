@@ -3,7 +3,7 @@
  */
 import React, { PropsWithChildren } from 'react'
 import { appWithI18Next } from '../app-with-i18next'
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import { useSyncLanguage } from './use-sync-language'
 import '@testing-library/jest-dom/extend-expect'
 
@@ -28,15 +28,13 @@ const wrapper = ({ children }: PropsWithChildren<unknown>) => (
 it('should properly change the i18n selected language when receiving new input', async () => {
   const initialProps: { language?: string } = { language: undefined }
 
-  const { rerender, result, waitForNextUpdate } = renderHook(
+  const { rerender, result } = renderHook(
     ({ language }) => useSyncLanguage(language),
     {
       wrapper,
       initialProps,
     },
   )
-
-  await waitForNextUpdate()
 
   rerender({ language: 'en' })
 
