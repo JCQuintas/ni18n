@@ -40,9 +40,12 @@ Read the docs at [Getting Started](./docs/usage/getting-started.md) or on the we
 
 When running on Vercel we are unable to load the translation files automatically because the [vercel/nft](https://github.com/vercel/nft) package doesn't bundle files requested by a third party lib.
 
-A work around is to add `const locales = path.resolve('./', './public/locales')` inside all your `loadTranslations` as shown on the snippet below.
+A work around is to create a wrapper around `loadTranslations` that calls `path.resolve('./', './public/locales')`, and then use this function instead of the exported by the `ni18n` package. 
 
 ```typescript
+import { loadTranslations as ni18nLoadTranslations } from 'ni18n'
+import { ni18nConfig } from '../ni18n.config'
+
 export const loadTranslations = async (
   initialLocale?: string | undefined,
   namespacesNeeded?: NamespacesNeeded | undefined,
