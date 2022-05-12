@@ -35,3 +35,26 @@ import {
 ## Getting Started
 
 Read the docs at [Getting Started](./docs/usage/getting-started.md) or on the website [https://jcquintas.gitbook.io/ni18n/usage/getting-started](https://jcquintas.gitbook.io/ni18n/usage/getting-started)
+
+## Known Issues
+
+When running on Vercel we are unable to load the translation files automatically because the [vercel/nft](https://github.com/vercel/nft) package doesn't bundle files requested by a third party lib.
+
+A work around is to add `const locales = path.resolve('./', './public/locales')` inside all your `loadTranslations` as shown on the snippet below.
+
+```typescript
+export const loadTranslations = async (
+  initialLocale?: string | undefined,
+  namespacesNeeded?: NamespacesNeeded | undefined,
+) => {
+  const locales = path.resolve('./', './public/locales')
+
+  return await ni18nLoadTranslations(
+    ni18nConfig,
+    initialLocale,
+    namespacesNeeded,
+  )
+}
+```
+
+You can read more on [#49](https://github.com/JCQuintas/ni18n/issues/49)
