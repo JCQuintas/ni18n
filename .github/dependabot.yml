@@ -3,21 +3,4 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'daily'
-
-  - package-ecosystem: 'npm'
-    directory: '/'
-    schedule:
-      interval: 'daily'
-
-  - package-ecosystem: 'npm'
-    directory: '/data/example-template'
-    schedule:
-      interval: 'daily'
-    open-pull-requests-limit: 0
-
-  - package-ecosystem: 'npm'
-    directory: '/examples'
-    schedule:
-      interval: 'daily'
-    open-pull-requests-limit: 0
+      interval: 'weekly'
