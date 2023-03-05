@@ -85,7 +85,7 @@ if (require.main === module) {
     if (target.namespaces.includes(target.namespace)) {
       const data = JSON.stringify(
         translations[target.language as keyof typeof translations][
-          target.namespace as keyof typeof translations['en']
+          target.namespace as keyof (typeof translations)['en']
         ],
       )
 
