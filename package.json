@@ -54,7 +54,7 @@
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
-    "chalk": "^5.2.0",
+    "chalk": "^4.1.2",
     "copyfiles": "^2.4.1",
     "deepmerge": "^4.3.0",
     "enquirer": "^2.3.6",
