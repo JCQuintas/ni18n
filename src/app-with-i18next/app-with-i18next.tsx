@@ -5,6 +5,7 @@ import { I18nextProvider } from 'react-i18next'
 import { createI18nInstance } from '../create-i18n-instance'
 import type {
   Ni18nClientState,
+  Ni18nLocale,
   Ni18nOptions,
   Ni18nServerState,
 } from '../common'
@@ -31,9 +32,13 @@ export const appWithI18Next = (
   }
 
   const WithI18Next = (props: AppProps) => {
-    const { __ni18n_server__, __ni18n_client__ } = (props.pageProps ||
-      {}) as Partial<Ni18nServerState & Ni18nClientState>
-    const { locale } = props.router
+    const { __ni18n_server__, __ni18n_client__, __ni18n_locale__ } =
+      (props.pageProps || {}) as Partial<
+        Ni18nServerState & Ni18nClientState & Ni18nLocale
+      >
+    const { locale: nextLocale } = props.router
+
+    const locale = __ni18n_locale__ || nextLocale
 
     const i18nInstance = useMemo(() => {
       const { use: plugins, ...i18nextOptions } = options

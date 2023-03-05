@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { useTranslation } from 'react-i18next'
 import { appWithI18Next } from './app-with-i18next'
 import '@testing-library/jest-dom/extend-expect'
 
@@ -37,3 +38,19 @@ test.each([
     expect(element).toBeInTheDocument()
   },
 )
+
+const RenderWithLocale = () => {
+  const { i18n } = useTranslation()
+  return <>{i18n.options.lng}</>
+}
+
+it('should set locale based on __ni18n_locale__ if available', () => {
+  const App = appWithI18Next(RenderWithLocale, { supportedLngs: ['en', 'es'] })
+  render(
+    <App router={{ locale: 'en' }} pageProps={{ __ni18n_locale__: 'es' }} />,
+  )
+
+  const element = screen.getByText('es')
+
+  expect(element).toBeInTheDocument()
+})
