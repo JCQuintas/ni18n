@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { TFuncKey, useTranslation } from 'react-i18next'
+import { TFuncKey } from 'i18next'
+import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 
 type Language = {
@@ -40,16 +41,12 @@ export const Header = () => {
             passHref
             key={language.code}
           >
-            <a>
-              <button
-                data-id={`${language.code}-button`}
-                className={
-                  router.locale === language.code ? 'active' : undefined
-                }
-              >
-                {t(language.translateKey)}
-              </button>
-            </a>
+            <button
+              data-id={`${language.code}-button`}
+              className={router.locale === language.code ? 'active' : undefined}
+            >
+              {t(language.translateKey)}
+            </button>
           </Link>
         ))}
       </div>

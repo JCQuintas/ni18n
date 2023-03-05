@@ -44,14 +44,12 @@ export const Footer = () => {
     <footer>
       {pages.map((page) => (
         <Link href={page.path} passHref key={page.path}>
-          <a>
-            <button
-              data-id={`${page.name}-page-button`}
-              className={router.pathname === page.path ? 'active' : undefined}
-            >
-              {t(page.translateKey)}
-            </button>
-          </a>
+          <button
+            data-id={`${page.name}-page-button`}
+            className={router.pathname === page.path ? 'active' : undefined}
+          >
+            {t(page.translateKey)}
+          </button>
         </Link>
       ))}
     </footer>

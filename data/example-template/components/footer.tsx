@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { TFuncKey, useTranslation } from 'react-i18next'
+import { TFuncKey } from 'i18next'
+import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
 
 type Page = {
@@ -43,14 +44,12 @@ export const Footer = () => {
     <footer>
       {pages.map((page) => (
         <Link href={page.path} passHref key={page.path}>
-          <a>
-            <button
-              data-id={`${page.name}-page-button`}
-              className={router.pathname === page.path ? 'active' : undefined}
-            >
-              {t(page.translateKey)}
-            </button>
-          </a>
+          <button
+            data-id={`${page.name}-page-button`}
+            className={router.pathname === page.path ? 'active' : undefined}
+          >
+            {t(page.translateKey)}
+          </button>
         </Link>
       ))}
     </footer>
