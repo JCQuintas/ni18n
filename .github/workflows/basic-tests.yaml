@@ -27,7 +27,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         with:
@@ -45,7 +45,7 @@ jobs:
           CI: true
 
       - name: Codecov
-        uses: codecov/codecov-action@v3.1.0
+        uses: codecov/codecov-action@v3.1.1
         if: ${{ matrix.node-version  == '14.x'}}
         with:
           flags: Unit
@@ -61,7 +61,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         with:
@@ -87,7 +87,7 @@ jobs:
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v3
         with:
