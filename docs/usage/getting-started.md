@@ -89,6 +89,24 @@ At this point, **all your translation files** will be loaded on the client side,
 
 We also recommend to always use either [loadTranslations](./server-side-loading.md) or [clientNamespaces](./client-side-loading.md) or both in a page, else you will load all the namespaces on your application for every page.
 
+### Overriding the initial locale
+
+By default, the i18n instance is initialized with the locale from Next.js. If you want to override this (for example, with a locale from a cookie, header, or some other method), pass that locale as the pageProp `__ni18n_locale__`.
+
+```typescript
+// pages/index.ts
+
+export const getServerSideProps = async ({ req }) => {
+  const locale = req.cookies['MY_LOCALE_COOKIE']
+  return {
+    props: {
+      __ni18n_locale__: locale,
+      ...(await loadTranslations(ni18nConfig, locale, ['server-namespace'])),
+    },
+  }
+}
+```
+
 ### Importing
 
 `ni18n` only exports `appWithI18Next`, `loadTranslations`, `clientNamespaces` and `useSyncLanguage`. All other functions you need can be imported from `react-i18next` or `i18next` directly.
