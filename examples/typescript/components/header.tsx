@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { TFuncKey, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/router'
+import { TFuncKey } from 'i18next'
 
 type Language = {
   code: string
