@@ -1,5 +1,5 @@
 import path from 'path'
-import { execSync } from 'child_process'
+import { execSync, ExecSyncOptions } from 'child_process'
 
 export const examplesFolder = (segment: string) =>
   path.join(process.cwd(), 'examples', segment)
@@ -14,22 +14,28 @@ const targetDirs: string[] = [
   process.cwd(),
 ]
 
+const dirOrRoot = (dir: string) => dir.replace(process.cwd(), '') || '/'
+
+const execOptions = (dir: string): ExecSyncOptions => ({
+  cwd: dir,
+  stdio: ['ignore', 'pipe', 'ignore'],
+})
+
 const main = async () => {
   await Promise.all(
     [...targetDirs, path.join(process.cwd(), 'data', 'example-template')].map(
-      (dir) =>
-        execSync('ncu -u', {
-          cwd: dir,
-        }),
+      (dir) => {
+        execSync('ncu -u', execOptions(dir))
+        console.log(`Got latest versions: ${dirOrRoot(dir)}`)
+      },
     ),
   )
 
   await Promise.all(
-    targetDirs.map((dir) =>
-      execSync('yarn', {
-        cwd: dir,
-      }),
-    ),
+    targetDirs.map((dir) => {
+      execSync('yarn', execOptions(dir))
+      console.log(`Installed latest versions: ${dirOrRoot(dir)}`)
+    }),
   )
 }
 
