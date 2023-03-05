@@ -5,16 +5,19 @@ export const getNamespaces = (
   options: InitOptions,
   namespacesNeeded?: string | string[],
 ): string[] => {
-  const defaultNS = options.defaultNS || 'translation'
+  const inputNamespace = options.defaultNS || 'translation'
+  const defaultNS = Array.isArray(inputNamespace)
+    ? inputNamespace
+    : [inputNamespace]
 
   if (Array.isArray(namespacesNeeded) && namespacesNeeded.length === 0)
     return []
 
   if (Array.isArray(namespacesNeeded))
-    return uniqueArray([...namespacesNeeded, defaultNS])
+    return uniqueArray([...namespacesNeeded, ...defaultNS])
 
   if (typeof namespacesNeeded === 'string')
-    return uniqueArray([namespacesNeeded, defaultNS])
+    return uniqueArray([namespacesNeeded, ...defaultNS])
 
-  return [defaultNS]
+  return defaultNS
 }

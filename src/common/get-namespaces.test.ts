@@ -12,6 +12,14 @@ it('should return namespacesNeeded when it is an array with no values', () => {
   expect(result).toStrictEqual([])
 })
 
+it('should return namespacesNeeded merged with defaultNS when defaultNS is array', () => {
+  const result = getNamespaces({ defaultNS: ['defaultNS', 'defaultNS2'] }, [
+    'ns1',
+  ])
+
+  expect(result).toStrictEqual(['ns1', 'defaultNS', 'defaultNS2'])
+})
+
 it('should return namespacesNeeded plus defaultNS when it is a string', () => {
   const result = getNamespaces({ defaultNS: 'defaultNS' }, 'ns1')
 
