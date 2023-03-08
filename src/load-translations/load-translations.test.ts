@@ -38,6 +38,7 @@ it('should return correct values when both parameters are strings', async () => 
           translation: {},
         },
       },
+      lng: 'test',
     },
   })
 })
@@ -55,6 +56,7 @@ it('should return correct values when namespace is an array', async () => {
           translation: {},
         },
       },
+      lng: 'language',
     },
   })
 })
@@ -73,6 +75,7 @@ it('should return correct values when there is no initialLocale but options.fall
         test: { ns1: { a: 'a' }, translation: {} },
         language: { ns1: { a: '1' }, translation: {} },
       },
+      lng: undefined,
     },
   })
 })
@@ -99,6 +102,7 @@ it('should return an empty resource object if there is no data', async () => {
         test: { ns1: {}, translation: {} },
         language: { ns1: {}, translation: {} },
       },
+      lng: undefined,
     },
   })
 })

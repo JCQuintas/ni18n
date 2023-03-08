@@ -16,6 +16,11 @@ it('should throw an error if using without options', () => {
 
 const Rendered = () => <>Rendered</>
 
+const RenderWithLocale = () => {
+  const { i18n } = useTranslation()
+  return <>{i18n.options.lng}</>
+}
+
 test.each([
   [{}, {}],
   [{ __ni18n_server__: {} }, {}],
@@ -39,18 +44,25 @@ test.each([
   },
 )
 
-const RenderWithLocale = () => {
-  const { i18n } = useTranslation()
-  return <>{i18n.options.lng}</>
-}
-
-it('should set locale based on __ni18n_locale__ if available', () => {
+it('should set locale based on server state when available', () => {
   const App = appWithI18Next(RenderWithLocale, { supportedLngs: ['en', 'es'] })
   render(
-    <App router={{ locale: 'en' }} pageProps={{ __ni18n_locale__: 'es' }} />,
+    <App
+      router={{ locale: 'en' }}
+      pageProps={{ __ni18n_server__: { lng: 'es' } }}
+    />,
   )
 
   const element = screen.getByText('es')
+
+  expect(element).toBeInTheDocument()
+})
+
+it('should set locale based on router by default', () => {
+  const App = appWithI18Next(RenderWithLocale, { supportedLngs: ['en', 'es'] })
+  render(<App router={{ locale: 'en' }} pageProps={{ __ni18n_server__: {} }} />)
+
+  const element = screen.getByText('en')
 
   expect(element).toBeInTheDocument()
 })
