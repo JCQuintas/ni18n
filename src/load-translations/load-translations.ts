@@ -77,7 +77,7 @@ export const loadTranslations = async (
     __ni18n_server__: {
       resources: store,
       ns: namespaces,
-      lng: initialLocale,
+      ...(initialLocale && { lng: initialLocale }),
     },
   }
 }
