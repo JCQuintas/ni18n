@@ -38,6 +38,7 @@ it('should return correct values when both parameters are strings', async () => 
           translation: {},
         },
       },
+      lng: 'test',
     },
   })
 })
@@ -55,6 +56,7 @@ it('should return correct values when namespace is an array', async () => {
           translation: {},
         },
       },
+      lng: 'language',
     },
   })
 })

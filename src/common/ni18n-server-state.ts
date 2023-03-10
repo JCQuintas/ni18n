@@ -5,5 +5,6 @@ export type Ni18nServerState = {
   __ni18n_server__: {
     resources: Resource
     ns: NamespacesNeeded
+    lng?: string
   }
 }
