@@ -48,6 +48,9 @@ jobs:
       - name: Install local dependencies on ${{ matrix.example }}
         run: cd examples/${{ matrix.example }} && yarn install --frozen-lockfile
 
+      - name: Run server ${{ matrix.example }} (if any)
+        run: cd examples/${{ matrix.example }} && yarn server &
+
       - name: Build ${{ matrix.example }}
         run: cd examples/${{ matrix.example }} && yarn build
 

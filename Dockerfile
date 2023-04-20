@@ -24,9 +24,9 @@ RUN yarn install
 ARG INIT_COMMAND="start"
 ENV INIT_COMMAND=$INIT_COMMAND
 
-RUN test "$INIT_COMMAND" = "start" && yarn build || exit 0
+RUN test "$INIT_COMMAND" = "start" && yarn server & yarn build || exit 0
 
 EXPOSE 3000
 EXPOSE 7777
 
-CMD ["/bin/sh", "-c", "yarn $INIT_COMMAND & sleep 5 && cd /app && yarn test:e2e"]
+CMD ["/bin/sh", "-c", "yarn server & yarn $INIT_COMMAND & sleep 5 && cd /app && yarn test:e2e"]

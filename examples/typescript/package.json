@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
+    "server": "echo 'no server'",
     "build": "next build",
     "start": "next start"
   },
