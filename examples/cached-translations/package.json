@@ -9,14 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "13.2.3",
+    "next": "13.3.0",
     "ni18n": "link:../../",
     "i18next-chained-backend": "^4.2.0",
-    "i18next-http-backend": "^2.1.1",
-    "i18next-localstorage-backend": "^4.1.0"
+    "i18next-http-backend": "^2.2.0",
+    "i18next-localstorage-backend": "^4.1.1"
   },
   "devDependencies": {
-    "eslint-config-next": "^13.2.3",
-    "prettier": "^2.8.4"
+    "eslint-config-next": "^13.3.0",
+    "prettier": "^2.8.7"
   }
 }
