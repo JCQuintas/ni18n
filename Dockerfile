@@ -10,7 +10,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn build:esm
+RUN yarn build
 
 RUN npm config set update-notifier false
 

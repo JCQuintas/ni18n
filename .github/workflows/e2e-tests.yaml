@@ -43,7 +43,7 @@ jobs:
       - run: npx playwright install chromium
 
       - name: Build ni18n
-        run: yarn build:esm
+        run: yarn build
 
       - name: Install local dependencies on ${{ matrix.example }}
         run: cd examples/${{ matrix.example }} && yarn install --frozen-lockfile
