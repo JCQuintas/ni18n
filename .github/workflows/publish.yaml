@@ -11,8 +11,10 @@ on:
 
 jobs:
   build-and-publish:
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -24,6 +26,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           registry-url: 'https://registry.npmjs.org'
+
+      - run: npm install -g npm
 
       - name: Install
         run: yarn install --frozen-lockfile
