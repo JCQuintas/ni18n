@@ -1,0 +1,21 @@
+{
+  "name": "ni18n-examples-usesynclanguage",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "next": "13.3.0",
+    "ni18n": "1.1.0",
+    "prettier": "2.8.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "12.1.0"
+  }
+}
