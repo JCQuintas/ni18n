@@ -8,3 +8,4 @@ There are a few ready made projects that you can find in the examples folder. Th
 - [Custom Language Selection](../examples/custom-language-selection)
 - [Custom Translation Files Location](../examples/custom-location)
 - [Cached Translations](../examples/cached-translations)
+- [Use `useSyncLanguage` to change language](../examples/use-sync-language)
